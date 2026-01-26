@@ -4,169 +4,552 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>dinar.agency - сайт в разработке</title>
-  <meta name="description" content="Сайт dinar.agency в разработке. Связь: db@dinardb.ru" />
+  <title>dinar.agency - скоро запуск</title>
+  <meta name="description" content="dinar.agency - сайт в разработке. Для связи: db@dinardb.ru" />
   <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0b1020" />
 
-  <meta property="og:title" content="dinar.agency - в разработке" />
-  <meta property="og:description" content="Сайт в разработке. Связь: db@dinardb.ru" />
+  <meta property="og:title" content="dinar.agency - скоро запуск" />
+  <meta property="og:description" content="Сайт в разработке. Для связи: db@dinardb.ru" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dinar.agency/" />
 
   <style>
-    :root { color-scheme: light; }
-    * { box-sizing: border-box; }
+    :root{
+      --bg0:#070912;
+      --bg1:#0b1020;
+      --card: rgba(255,255,255,0.08);
+      --card2: rgba(255,255,255,0.12);
+      --stroke: rgba(255,255,255,0.14);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.68);
+      --muted2: rgba(255,255,255,0.56);
 
-    body {
-      margin: 0;
+      --a:#7c5cff;   /* violet */
+      --b:#26e7a6;   /* mint */
+      --c:#ff5cc8;   /* pink */
+      --d:#ffd166;   /* warm */
+
+      --shadow: 0 22px 90px rgba(0,0,0,0.45);
+      color-scheme: dark;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      min-height: 100vh;
+      color: var(--text);
+      background: radial-gradient(1200px 900px at 20% 15%, rgba(124,92,255,0.22) 0%, transparent 55%),
+                  radial-gradient(1000px 800px at 80% 18%, rgba(38,231,166,0.18) 0%, transparent 52%),
+                  radial-gradient(900px 700px at 70% 85%, rgba(255,92,200,0.12) 0%, transparent 54%),
+                  linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+      overflow-x:hidden;
+    }
+
+    /* animated blobs */
+    .blob{
+      position: fixed;
+      width: 520px;
+      height: 520px;
+      filter: blur(38px);
+      opacity: 0.55;
+      border-radius: 999px;
+      z-index: 0;
+      pointer-events: none;
+      transform: translate3d(0,0,0);
+      mix-blend-mode: screen;
+      animation: float 14s ease-in-out infinite;
+    }
+    .blob.one{
+      left: -160px;
+      top: -140px;
+      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,0.9), transparent 60%),
+                  radial-gradient(circle at 70% 70%, rgba(255,92,200,0.75), transparent 55%);
+      animation-delay: -2s;
+    }
+    .blob.two{
+      right: -180px;
+      top: 40px;
+      background: radial-gradient(circle at 35% 35%, rgba(38,231,166,0.9), transparent 58%),
+                  radial-gradient(circle at 75% 65%, rgba(255,209,102,0.65), transparent 55%);
+      animation-duration: 16s;
+      animation-delay: -6s;
+    }
+    .blob.three{
+      left: 12%;
+      bottom: -220px;
+      width: 640px;
+      height: 640px;
+      background: radial-gradient(circle at 40% 45%, rgba(255,92,200,0.75), transparent 60%),
+                  radial-gradient(circle at 70% 55%, rgba(124,92,255,0.55), transparent 55%);
+      animation-duration: 18s;
+      animation-delay: -9s;
+    }
+
+    @keyframes float{
+      0%   { transform: translate(0px, 0px) scale(1); }
+      50%  { transform: translate(22px, -18px) scale(1.05); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+
+    /* subtle noise overlay */
+    .noise{
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.07;
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      background-size: 240px 240px;
+    }
+
+    .wrap{
+      min-height: 100%;
       display: grid;
       place-items: center;
-      padding: 18px;
-      color: #111;
-      background:
-        radial-gradient(1100px 650px at 15% 10%, rgba(110, 160, 255, 0.16) 0%, transparent 60%),
-        radial-gradient(900px 550px at 85% 20%, rgba(120, 240, 190, 0.14) 0%, transparent 55%),
-        linear-gradient(180deg, #ffffff 0%, #f7f7f8 100%);
+      padding: 22px;
+      position: relative;
+      z-index: 2;
     }
 
-    .card {
-      width: min(760px, 100%);
-      border-radius: 22px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.86);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.10);
-      padding: 28px;
-      backdrop-filter: blur(10px);
-    }
-
-    .top {
-      display: flex;
-      gap: 18px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-
-    .logo {
-      width: 88px;
-      height: 88px;
-      border-radius: 18px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: #fff;
+    .panel{
+      width: min(1020px, 100%);
+      border: 1px solid var(--stroke);
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.07) 55%, rgba(255,255,255,0.06) 100%);
+      box-shadow: var(--shadow);
       overflow: hidden;
-      display: grid;
-      place-items: center;
+      position: relative;
+      backdrop-filter: blur(12px);
+    }
+
+    /* shiny accent border */
+    .panel:before{
+      content:"";
+      position:absolute;
+      inset: -2px;
+      background: conic-gradient(from 210deg,
+        rgba(124,92,255,0.0),
+        rgba(124,92,255,0.55),
+        rgba(38,231,166,0.45),
+        rgba(255,92,200,0.42),
+        rgba(255,209,102,0.35),
+        rgba(124,92,255,0.0)
+      );
+      filter: blur(18px);
+      opacity: 0.38;
+      z-index: 0;
+      pointer-events:none;
+    }
+
+    .inner{
+      position: relative;
+      z-index: 1;
+      padding: 22px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 14px;
+      padding: 14px 14px 18px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .logo{
+      width: 54px;
+      height: 54px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.18);
+      overflow:hidden;
+      background: rgba(0,0,0,0.18);
+      display:grid;
+      place-items:center;
+      flex: 0 0 auto;
+    }
+    .logo img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+    .brandtext{
+      min-width: 0;
+    }
+    .name{
+      font-weight: 800;
+      letter-spacing: 0.25px;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 18px;
+    }
+    .tag{
+      margin-top: 3px;
+      color: var(--muted2);
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.20);
+      color: var(--muted);
+      font-size: 13px;
       flex: 0 0 auto;
     }
 
-    .logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .logo .fallback {
-      width: 100%;
-      height: 100%;
-      display: grid;
-      place-items: center;
-      font-weight: 700;
-      letter-spacing: 0.6px;
-      color: rgba(0,0,0,0.55);
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 30px;
-      line-height: 1.15;
-      letter-spacing: 0.2px;
-    }
-
-    .sub {
-      margin: 10px 0 0 0;
-      font-size: 16px;
-      line-height: 1.55;
-      color: rgba(0,0,0,0.70);
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 18px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(0,0,0,0.08);
-      background: rgba(255,255,255,0.75);
-      font-size: 14px;
-      color: rgba(0,0,0,0.78);
-    }
-
-    .dot {
+    .dot{
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background: #18a957;
-      box-shadow: 0 0 0 4px rgba(24,169,87,0.14);
+      background: var(--b);
+      box-shadow: 0 0 0 4px rgba(38,231,166,0.14);
       animation: pulse 1.6s infinite;
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); opacity: 1; }
-      70% { transform: scale(1.35); opacity: 0.65; }
-      100% { transform: scale(1); opacity: 1; }
+    @keyframes pulse{
+      0%{ transform:scale(1); opacity:1; }
+      70%{ transform:scale(1.35); opacity:0.65; }
+      100%{ transform:scale(1); opacity:1; }
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-      border-bottom: 1px dashed rgba(0,0,0,0.35);
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 16px;
+      padding: 20px 6px 6px 6px;
     }
-    a:hover { border-bottom-color: rgba(0,0,0,0.75); }
 
-    .footer {
+    h1{
+      margin:0;
+      font-size: clamp(30px, 3.8vw, 52px);
+      line-height: 1.02;
+      letter-spacing: 0.2px;
+    }
+
+    .lead{
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.65;
+      max-width: 60ch;
+    }
+
+    .actions{
       margin-top: 18px;
-      font-size: 13px;
-      color: rgba(0,0,0,0.55);
+      display:flex;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
-    @media (max-width: 420px) {
-      .card { padding: 20px; }
-      h1 { font-size: 26px; }
-      .logo { width: 78px; height: 78px; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      user-select:none;
+      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease, filter 120ms ease;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.26);
+    }
+    .btn.primary{
+      color: #071018;
+      border-color: rgba(255,255,255,0.14);
+      background: linear-gradient(90deg, rgba(124,92,255,1) 0%, rgba(38,231,166,1) 52%, rgba(255,92,200,0.95) 100%);
+      filter: saturate(1.05);
+    }
+    .btn.primary:hover{
+      filter: saturate(1.18) brightness(1.03);
+    }
+    .btn:active{ transform: translateY(0px); }
+
+    .meta{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.18);
+      color: var(--muted2);
+      font-size: 12px;
+    }
+
+    .side{
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.18);
+      border-radius: 22px;
+      padding: 16px;
+      position: relative;
+      overflow:hidden;
+    }
+
+    .side:before{
+      content:"";
+      position:absolute;
+      inset:-80px -60px auto auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 30%, rgba(255,209,102,0.25), transparent 60%),
+                  radial-gradient(circle at 70% 70%, rgba(124,92,255,0.22), transparent 55%);
+      filter: blur(10px);
+      opacity: 0.75;
+      pointer-events:none;
+    }
+
+    .side h2{
+      margin:0;
+      font-size: 14px;
+      letter-spacing: 0.2px;
+      color: rgba(255,255,255,0.86);
+      position: relative;
+      z-index: 1;
+    }
+
+    .kv{
+      margin-top: 12px;
+      display:grid;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .row b{
+      color: rgba(255,255,255,0.92);
+      font-weight: 800;
+    }
+
+    .list{
+      margin-top: 14px;
+      padding-left: 0;
+      list-style: none;
+      display:grid;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+    }
+    .li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      padding: 10px 12px;
+      border: 1px dashed rgba(255,255,255,0.14);
+      border-radius: 16px;
+      background: rgba(0,0,0,0.10);
+    }
+    .li .ic{
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      display:grid;
+      place-items:center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      flex: 0 0 auto;
+    }
+
+    .footer{
+      margin-top: 16px;
+      padding: 14px 10px 6px 10px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      color: rgba(255,255,255,0.50);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(0,0,0,0.70);
+      color: rgba(255,255,255,0.92);
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 160ms ease;
+      backdrop-filter: blur(10px);
+      z-index: 3;
+    }
+    .toast.show{ opacity: 1; }
+
+    /* responsive */
+    @media (max-width: 920px){
+      .grid{ grid-template-columns: 1fr; }
+      .chip{ display:none; }
+    }
+    @media (max-width: 420px){
+      .inner{ padding: 16px; }
+      .logo{ width: 50px; height: 50px; }
+      .btn{ width: 100%; }
+    }
+
+    /* reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .blob, .dot{ animation: none !important; }
+      .btn{ transition: none; }
     }
   </style>
 </head>
 
 <body>
-  <main class="card" role="main" aria-label="Заглушка сайта dinar.agency">
-    <div class="top">
-      <div class="logo" aria-label="Логотип">
-        <img src="logo.png" alt="dinar.agency logo"
-             onerror="this.remove(); this.parentElement.insertAdjacentHTML('beforeend','<div class=&quot;fallback&quot;>DB</div>')" />
-      </div>
+  <div class="blob one" aria-hidden="true"></div>
+  <div class="blob two" aria-hidden="true"></div>
+  <div class="blob three" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
 
-      <div>
-        <h1>dinar.agency</h1>
-        <p class="sub">
-          Сайт пока в разработке.
-          Для связи: <a href="mailto:db@dinardb.ru">db@dinardb.ru</a> ✉️
-        </p>
+  <div class="wrap">
+    <section class="panel" aria-label="Заглушка dinar.agency">
+      <div class="inner">
 
-        <div class="pill">
-          <span class="dot" aria-hidden="true"></span>
-          <span>Страница-заглушка активна</span>
+        <div class="topbar">
+          <div class="brand">
+            <div class="logo" aria-label="Логотип">
+              <img src="logo.png" alt="dinar.agency logo"
+                   onerror="this.remove(); this.parentElement.innerHTML='<span style=&quot;font-weight:900;color:rgba(255,255,255,0.78);&quot;>DA</span>';" />
+            </div>
+            <div class="brandtext">
+              <div class="name">dinar.agency</div>
+              <div class="tag">Сайт в разработке, скоро будет больше</div>
+            </div>
+          </div>
+
+          <div class="chip" aria-label="Статус">
+            <span class="dot" aria-hidden="true"></span>
+            <span>Страница активна</span>
+          </div>
         </div>
-      </div>
-    </div>
 
-    <div class="footer">© <span id="y"></span> dinar.agency</div>
-  </main>
+        <div class="grid">
+          <div>
+            <h1>Собираю витрину агентства ✨</h1>
+            <div class="lead">
+              Здесь появятся кейсы, услуги и понятный способ быстро оценить, подхожу ли я под твою задачу.
+              Пока самый надежный канал связи - почта.
+            </div>
+
+            <div class="actions" role="group" aria-label="Действия">
+              <a class="btn primary" href="mailto:db@dinardb.ru?subject=dinar.agency%20-%20запрос&body=Здравствуйте!%0A%0AКоротко опишите задачу:%0A%0AСроки:%0AБюджет:%0A">
+                ✉️ Написать на db@dinardb.ru
+              </a>
+              <button class="btn" type="button" id="copyBtn">📋 Скопировать email</button>
+            </div>
+
+            <div class="meta" aria-label="Скоро на сайте">
+              <span class="pill">🎯 кейсы</span>
+              <span class="pill">🧩 услуги</span>
+              <span class="pill">🗂️ процесс</span>
+              <span class="pill">🤝 контакты</span>
+            </div>
+          </div>
+
+          <aside class="side" aria-label="Инфо">
+            <h2>Быстрая связь</h2>
+
+            <div class="kv">
+              <div class="row"><span>Email</span><b>db@dinardb.ru</b></div>
+              <div class="row"><span>Домен</span><b>dinar.agency</b></div>
+              <div class="row"><span>Статус</span><b>в разработке</b></div>
+            </div>
+
+            <ul class="list" aria-label="Что будет дальше">
+              <li class="li"><span class="ic">⚡</span><span>Публикация первых кейсов и коротких описаний задач.</span></li>
+              <li class="li"><span class="ic">🧠</span><span>Форматы работы и ожидания по срокам и коммуникации.</span></li>
+              <li class="li"><span class="ic">📌</span><span>Контакты и удобные быстрые кнопки связи.</span></li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="footer">
+          <div>© <span id="y"></span> dinar.agency</div>
+          <div>Hosted on GitHub Pages</div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Скопировано: db@dinardb.ru</div>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    const email = 'db@dinardb.ru';
+    const copyBtn = document.getElementById('copyBtn');
+    const toast = document.getElementById('toast');
+
+    function showToast(text){
+      toast.textContent = text;
+      toast.classList.add('show');
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove('show'), 1400);
+    }
+
+    copyBtn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(email);
+        showToast('Скопировано: ' + email);
+      } catch (e) {
+        window.location.href = 'mailto:' + email;
+      }
+    });
   </script>
 </body>
 </html>
