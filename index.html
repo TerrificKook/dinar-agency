@@ -4,536 +4,553 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>Динар Динмухаметов — операционный консультант и антикризисный менеджер</title>
-  <meta name="description" content="Помогаю микробизнесу и специалистам выйти в онлайн: сайт, Telegram-бот, план развития. Без воды, по делу. Первый проект — со скидкой." />
+  <title>Динар Динмухаметов — Запуск бизнеса в онлайне | Консультации по AI</title>
+  <meta name="description" content="Помогаю микробизнесу и специалистам выйти в онлайн: сайт, Telegram-бот, план развития. Консультации по AI-инструментам (ChatGPT, Gemini, Manus, Perplexity)." />
+  <meta name="keywords" content="запуск бизнеса онлайн, создание сайта, telegram бот, консультации AI, ChatGPT, Gemini, Manus, Perplexity, digital консалтинг" />
+  <meta name="author" content="Динар Динмухаметов" />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#0b1020" />
+  <meta name="theme-color" content="#111111" />
 
-  <meta property="og:title" content="Динар Динмухаметов — операционный консультант" />
-  <meta property="og:description" content="Помогаю микробизнесу и специалистам выйти в онлайн: сайт, Telegram-бот, план развития." />
+  <meta property="og:title" content="Динар Динмухаметов — Запуск бизнеса в онлайне" />
+  <meta property="og:description" content="Помогаю микробизнесу и специалистам выйти в онлайн: сайт, Telegram-бот, план развития. Консультации по AI-инструментам." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dinar.agency/" />
 
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "dinar.agency",
+    "description": "Запуск бизнеса в онлайне за 2 недели",
+    "url": "https://dinar.agency",
+    "founder": {
+      "@type": "Person",
+      "name": "Динар Динмухаметов"
+    },
+    "areaServed": "RU",
+    "serviceType": ["Консалтинг", "Веб-разработка", "AI консультации"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --bg0:#070912;
-      --bg1:#0b1020;
-      --card: rgba(255,255,255,0.08);
-      --card2: rgba(255,255,255,0.12);
-      --stroke: rgba(255,255,255,0.14);
-      --text: rgba(255,255,255,0.92);
-      --muted: rgba(255,255,255,0.68);
-      --muted2: rgba(255,255,255,0.56);
-
-      --a:#7c5cff;   /* violet */
-      --b:#26e7a6;   /* mint */
-      --c:#ff5cc8;   /* pink */
-      --d:#ffd166;   /* warm */
-
-      --shadow: 0 22px 90px rgba(0,0,0,0.45);
-      color-scheme: dark;
-    }
-
-    *{ box-sizing:border-box; }
+    *{ box-sizing:border-box; margin:0; padding:0; }
     html,body{ height:100%; }
     body{
-      margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color: var(--text);
-      background: radial-gradient(1200px 900px at 20% 15%, rgba(124,92,255,0.22) 0%, transparent 55%),
-                  radial-gradient(1000px 800px at 80% 18%, rgba(38,231,166,0.18) 0%, transparent 52%),
-                  radial-gradient(900px 700px at 70% 85%, rgba(255,92,200,0.12) 0%, transparent 54%),
-                  linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
-      overflow-x:hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: #111111;
+      background: #ffffff;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* animated blobs */
-    .blob{
-      position: fixed;
-      width: 520px;
-      height: 520px;
-      filter: blur(38px);
-      opacity: 0.55;
-      border-radius: 999px;
-      z-index: 0;
-      pointer-events: none;
-      transform: translate3d(0,0,0);
-      mix-blend-mode: screen;
-      animation: float 14s ease-in-out infinite;
-    }
-    .blob.one{
-      left: -160px;
-      top: -140px;
-      background: radial-gradient(circle at 30% 30%, rgba(124,92,255,0.9), transparent 60%),
-                  radial-gradient(circle at 70% 70%, rgba(255,92,200,0.75), transparent 55%);
-      animation-delay: -2s;
-    }
-    .blob.two{
-      right: -180px;
-      top: 40px;
-      background: radial-gradient(circle at 35% 35%, rgba(38,231,166,0.9), transparent 58%),
-                  radial-gradient(circle at 75% 65%, rgba(255,209,102,0.65), transparent 55%);
-      animation-duration: 16s;
-      animation-delay: -6s;
-    }
-    .blob.three{
-      left: 12%;
-      bottom: -220px;
-      width: 640px;
-      height: 640px;
-      background: radial-gradient(circle at 40% 45%, rgba(255,92,200,0.75), transparent 60%),
-                  radial-gradient(circle at 70% 55%, rgba(124,92,255,0.55), transparent 55%);
-      animation-duration: 18s;
-      animation-delay: -9s;
+    .container{
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
     }
 
-    @keyframes float{
-      0%   { transform: translate(0px, 0px) scale(1); }
-      50%  { transform: translate(22px, -18px) scale(1.05); }
-      100% { transform: translate(0px, 0px) scale(1); }
+    header{
+      padding: 48px 0 32px;
+      border-bottom: 1px solid #e5e5e5;
     }
 
-    /* subtle noise overlay */
-    .noise{
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.07;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-      background-size: 240px 240px;
-    }
-
-    .wrap{
-      min-height: 100%;
-      display: grid;
-      place-items: center;
-      padding: 22px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .panel{
-      width: min(1020px, 100%);
-      border: 1px solid var(--stroke);
-      border-radius: 28px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.07) 55%, rgba(255,255,255,0.06) 100%);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      position: relative;
-      backdrop-filter: blur(12px);
-    }
-
-    /* shiny accent border */
-    .panel:before{
-      content:"";
-      position:absolute;
-      inset: -2px;
-      background: conic-gradient(from 210deg,
-        rgba(124,92,255,0.0),
-        rgba(124,92,255,0.55),
-        rgba(38,231,166,0.45),
-        rgba(255,92,200,0.42),
-        rgba(255,209,102,0.35),
-        rgba(124,92,255,0.0)
-      );
-      filter: blur(18px);
-      opacity: 0.38;
-      z-index: 0;
-      pointer-events:none;
-    }
-
-    .inner{
-      position: relative;
-      z-index: 1;
-      padding: 22px;
-    }
-
-    .topbar{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 14px;
-      padding: 14px 14px 18px 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.10);
+    .header-content{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
     }
 
     .brand{
-      display:flex;
-      align-items:center;
-      gap: 14px;
-      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
-    .logo{
-      width: 54px;
-      height: 54px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.18);
-      overflow:hidden;
-      background: rgba(0,0,0,0.18);
-      display:grid;
-      place-items:center;
-      flex: 0 0 auto;
-    }
-    .logo img{
-      width:100%;
-      height:100%;
-      object-fit: cover;
-      display:block;
-    }
-    .brandtext{
-      min-width: 0;
-    }
-    .name{
-      font-weight: 800;
-      letter-spacing: 0.25px;
-      line-height: 1.1;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-size: 18px;
-    }
-    .tag{
-      margin-top: 3px;
-      color: var(--muted2);
-      font-size: 13px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap: 10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.20);
-      color: var(--muted);
-      font-size: 13px;
-      flex: 0 0 auto;
-    }
-
-    .dot{
-      width: 10px;
-      height: 10px;
+    .brand-photo img{
+      width: 56px;
+      height: 56px;
       border-radius: 50%;
-      background: var(--b);
-      box-shadow: 0 0 0 4px rgba(38,231,166,0.14);
-      animation: pulse 1.6s infinite;
+      object-fit: cover;
+      filter: brightness(1.05) contrast(1.05);
     }
 
-    @keyframes pulse{
-      0%{ transform:scale(1); opacity:1; }
-      70%{ transform:scale(1.35); opacity:0.65; }
-      100%{ transform:scale(1); opacity:1; }
+    .brand-text h1{
+      font-size: 18px;
+      font-weight: 600;
+      color: #111111;
+      letter-spacing: -0.02em;
     }
 
-    .grid{
-      display:grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 16px;
-      padding: 20px 6px 6px 6px;
+    .brand-text p{
+      font-size: 14px;
+      color: #666666;
+      margin-top: 4px;
+      font-weight: 500;
     }
 
-    h1{
-      margin:0;
-      font-size: clamp(28px, 3.8vw, 48px);
-      line-height: 1.12;
-      letter-spacing: 0.2px;
-      font-weight: 800;
+    .status{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 24px;
+      background: #f5f5f5;
+      font-size: 13px;
+      color: #111111;
+      font-weight: 500;
     }
 
-    .lead{
-      margin-top: 16px;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.65;
-      max-width: 58ch;
+    .status-dot{
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10b981;
+    }
+
+    main{
+      padding: 120px 0 160px;
+    }
+
+    .hero{
+      max-width: 720px;
+    }
+
+    .hero-label{
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666666;
+      margin-bottom: 24px;
+    }
+
+    .hero h2{
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: #111111;
+      margin-bottom: 32px;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-lead{
+      font-size: 20px;
+      line-height: 1.7;
+      color: #444444;
+      margin-bottom: 48px;
+      font-weight: 500;
     }
 
     .actions{
-      margin-top: 20px;
-      display:flex;
-      gap: 12px;
+      display: flex;
+      gap: 16px;
       flex-wrap: wrap;
+      margin-bottom: 96px;
     }
 
     .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      padding: 13px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.06);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 14px;
-      cursor: pointer;
-      user-select:none;
-      text-decoration: none;
-      transition: transform 120ms ease, background 120ms ease, border-color 120ms ease, filter 120ms ease;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,0.08);
-      border-color: rgba(255,255,255,0.26);
-    }
-    .btn.primary{
-      color: #071018;
-      border-color: rgba(255,255,255,0.14);
-      background: linear-gradient(90deg, rgba(124,92,255,1) 0%, rgba(38,231,166,1) 52%, rgba(255,92,200,0.95) 100%);
-      filter: saturate(1.05);
-    }
-    .btn.primary:hover{
-      filter: saturate(1.18) brightness(1.03);
-    }
-    .btn:active{ transform: translateY(0px); }
-
-    .meta{
-      display:flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-    .pill{
-      display:inline-flex;
-      align-items:center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       gap: 8px;
-      padding: 8px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(0,0,0,0.18);
-      color: var(--muted2);
-      font-size: 12px;
-    }
-
-    .side{
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(0,0,0,0.18);
-      border-radius: 22px;
-      padding: 18px;
-      position: relative;
-      overflow:hidden;
-    }
-
-    .side:before{
-      content:"";
-      position:absolute;
-      inset:-80px -60px auto auto;
-      width: 220px;
-      height: 220px;
-      border-radius: 999px;
-      background: radial-gradient(circle at 30% 30%, rgba(255,209,102,0.25), transparent 60%),
-                  radial-gradient(circle at 70% 70%, rgba(124,92,255,0.22), transparent 55%);
-      filter: blur(10px);
-      opacity: 0.75;
-      pointer-events:none;
-    }
-
-    .side h2{
-      margin:0;
+      padding: 16px 32px;
+      border-radius: 8px;
       font-size: 15px;
-      letter-spacing: 0.2px;
-      color: rgba(255,255,255,0.86);
-      position: relative;
-      z-index: 1;
-      font-weight: 700;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 180ms cubic-bezier(0.4, 0, 0.2, 1);
+      border: none;
+      letter-spacing: -0.01em;
     }
 
-    .kv{
-      margin-top: 14px;
-      display:grid;
-      gap: 10px;
-      position: relative;
-      z-index: 1;
+    .btn-primary{
+      background: #111111;
+      color: #ffffff;
     }
-    .row{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 12px;
-      padding: 11px 13px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: var(--muted);
+    .btn-primary:hover{
+      background: #000000;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .btn-secondary{
+      background: #f5f5f5;
+      color: #111111;
+    }
+    .btn-secondary:hover{
+      background: #e5e5e5;
+    }
+
+    .section-title{
       font-size: 13px;
-    }
-    .row b{
-      color: rgba(255,255,255,0.92);
-      font-weight: 800;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666666;
+      margin-bottom: 32px;
     }
 
-    .list{
-      margin-top: 16px;
-      padding-left: 0;
+    .services{
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 120px;
+    }
+
+    .service-card{
+      padding: 40px;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      background: #fafafa;
+      transition: all 180ms ease;
+    }
+
+    .service-card:hover{
+      border-color: #d5d5d5;
+      background: #f5f5f5;
+    }
+
+    .service-card h3{
+      font-size: 20px;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .service-card p{
+      font-size: 15px;
+      color: #555555;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    .consultation-intro{
+      max-width: 720px;
+      margin-bottom: 40px;
+    }
+
+    .consultation-intro p{
+      font-size: 18px;
+      line-height: 1.7;
+      color: #444444;
+      font-weight: 500;
+    }
+
+    .consultation-packages{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 120px;
+    }
+
+    .package-card{
+      padding: 32px;
+      border: 1px solid #e5e5e5;
+      border-radius: 12px;
+      background: #fafafa;
+      transition: all 180ms ease;
+    }
+
+    .package-card:hover{
+      border-color: #d5d5d5;
+      background: #f5f5f5;
+    }
+
+    .package-card h4{
+      font-size: 18px;
+      font-weight: 600;
+      color: #111111;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .package-card ul{
       list-style: none;
-      display:grid;
-      gap: 10px;
-      position: relative;
-      z-index: 1;
-    }
-    .li{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-      padding: 11px 13px;
-      border: 1px dashed rgba(255,255,255,0.14);
-      border-radius: 16px;
-      background: rgba(0,0,0,0.10);
-    }
-    .li .ic{
-      width: 28px;
-      height: 28px;
-      border-radius: 10px;
-      display:grid;
-      place-items:center;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      flex: 0 0 auto;
+      padding: 0;
     }
 
-    .footer{
-      margin-top: 16px;
-      padding: 14px 10px 6px 10px;
-      border-top: 1px solid rgba(255,255,255,0.10);
-      color: rgba(255,255,255,0.50);
-      font-size: 12px;
-      display:flex;
-      justify-content:space-between;
-      gap: 12px;
+    .package-card li{
+      padding: 10px 0;
+      color: #555555;
+      font-size: 14px;
+      font-weight: 500;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .package-card li:last-child{
+      border-bottom: none;
+    }
+
+    .contact-section{
+      max-width: 520px;
+      padding: 48px;
+      border: 1px solid #e5e5e5;
+      border-radius: 16px;
+      background: #fafafa;
+    }
+
+    .contact-section h3{
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #666666;
+      margin-bottom: 24px;
+    }
+
+    .contact-grid{
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-row{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      background: #ffffff;
+      font-size: 14px;
+    }
+
+    .contact-row span:first-child{
+      color: #666666;
+      font-weight: 500;
+    }
+
+    .contact-row span:last-child{
+      color: #111111;
+      font-weight: 600;
+    }
+
+    footer{
+      border-top: 1px solid #e5e5e5;
+      padding: 48px 0;
+      margin-top: 80px;
+    }
+
+    .footer-content{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-size: 13px;
+      color: #999999;
+      font-weight: 500;
       flex-wrap: wrap;
     }
 
     .toast{
       position: fixed;
       left: 50%;
-      bottom: 18px;
+      bottom: 32px;
       transform: translateX(-50%);
-      padding: 10px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.70);
-      color: rgba(255,255,255,0.92);
-      font-size: 13px;
+      padding: 16px 24px;
+      border-radius: 8px;
+      background: #111111;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 160ms ease;
-      backdrop-filter: blur(10px);
-      z-index: 3;
+      transition: opacity 200ms ease;
+      z-index: 1000;
     }
     .toast.show{ opacity: 1; }
 
-    /* responsive */
-    @media (max-width: 920px){
-      .grid{ grid-template-columns: 1fr; }
-      .chip{ display:none; }
-    }
-    @media (max-width: 420px){
-      .inner{ padding: 16px; }
-      .logo{ width: 50px; height: 50px; }
-      .btn{ width: 100%; }
+    @media (max-width: 768px){
+      .hero h2{ font-size: 48px; }
+      .hero-lead{ font-size: 18px; }
+      .header-content{ flex-direction: column; align-items: flex-start; gap: 16px; }
+      .status{ display: none; }
+      .services{ grid-template-columns: 1fr; }
+      .service-card{ padding: 32px; }
+      .consultation-packages{ grid-template-columns: 1fr; }
+      .package-card{ padding: 28px; }
+      .contact-section{ padding: 32px; }
+      main{ padding: 80px 0 120px; }
     }
 
-    /* reduce motion */
-    @media (prefers-reduced-motion: reduce){
-      .blob, .dot{ animation: none !important; }
-      .btn{ transition: none; }
+    @media (max-width: 480px){
+      .hero h2{ font-size: 36px; }
+      .hero-lead{ font-size: 16px; }
+      .consultation-intro p{ font-size: 16px; }
+      .btn{ width: 100%; padding: 14px 24px; }
+      .service-card{ padding: 24px; }
+      .package-card{ padding: 24px; }
+      .contact-section{ padding: 24px; }
+      .container{ padding: 0 20px; }
+      main{ padding: 60px 0 100px; }
+      .brand-photo img{ width: 48px; height: 48px; }
     }
   </style>
 </head>
 
 <body>
-  <div class="blob one" aria-hidden="true"></div>
-  <div class="blob two" aria-hidden="true"></div>
-  <div class="blob three" aria-hidden="true"></div>
-  <div class="noise" aria-hidden="true"></div>
-
-  <div class="wrap">
-    <section class="panel" aria-label="Динар Динмухаметов">
-      <div class="inner">
-
-        <div class="topbar">
-          <div class="brand">
-            <div class="logo" aria-label="Логотип">
-              <img src="logo.png" alt="dinar.agency logo"
-                   onerror="this.remove(); this.parentElement.innerHTML='<span style=&quot;font-weight:900;color:rgba(255,255,255,0.78);&quot;>ДД</span>';" />
-            </div>
-            <div class="brandtext">
-              <div class="name">Динар Динмухаметов</div>
-              <div class="tag">Операционный консультант, Москва</div>
-            </div>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="brand">
+          <div class="brand-photo">
+            <img src="photo.png" alt="Динар Динмухаметов">
           </div>
-
-          <div class="chip" aria-label="Статус">
-            <span class="dot" aria-hidden="true"></span>
-            <span>Принимаю проекты</span>
+          <div class="brand-text">
+            <h1>Динар Динмухаметов</h1>
+            <p>Операционный консультант, Москва</p>
           </div>
         </div>
-
-        <div class="grid">
-          <div>
-            <h1>Запуск бизнеса в онлайне за 2 недели</h1>
-            <div class="lead">
-              Помогаю микробизнесу и специалистам выйти в онлайн: сайт, Telegram-бот, план развития. Без воды, по делу. Первый проект — со скидкой, чтобы набить руку и получить кейс.
-            </div>
-
-            <div class="actions" role="group" aria-label="Действия">
-              <a class="btn primary" href="mailto:db@dinardb.ru?subject=Запрос%20с%20dinar.agency&body=Здравствуйте!%0A%0AКоротко%20о%20задаче:%0A%0AСроки:%0AБюджет:%0A">
-                ✉️ Написать на db@dinardb.ru
-              </a>
-              <a class="btn" href="https://t.me/mrdinar" target="_blank" rel="noopener">💬 Telegram @mrdinar</a>
-              <button class="btn" type="button" id="copyBtn">📋 Скопировать email</button>
-            </div>
-
-            <div class="meta" aria-label="Что я делаю">
-              <span class="pill">🎯 Аудит и анализ ниши</span>
-              <span class="pill">🧩 Сайт на Manus/Cursor</span>
-              <span class="pill">🤖 Telegram-бот для заявок</span>
-              <span class="pill">📋 План развития на 3 месяца</span>
-            </div>
-          </div>
-
-          <aside class="side" aria-label="Контакты">
-            <h2>Связь</h2>
-
-            <div class="kv">
-              <div class="row"><span>Email</span><b>db@dinardb.ru</b></div>
-              <div class="row"><span>Telegram</span><b>@mrdinar</b></div>
-              <div class="row"><span>Домен</span><b>dinar.agency</b></div>
-              <div class="row"><span>Локация</span><b>Москва</b></div>
-            </div>
-
-            <ul class="list" aria-label="Что дальше">
-              <li class="li"><span class="ic">⚡</span><span>Скоро появятся первые кейсы и отзывы клиентов.</span></li>
-              <li class="li"><span class="ic">🧠</span><span>Опубликую структурный план работы над проектами.</span></li>
-              <li class="li"><span class="ic">📌</span><span>Добавлю калькулятор стоимости и форму брифа.</span></li>
-            </ul>
-          </aside>
+        <div class="status">
+          <span class="status-dot"></span>
+          <span>Принимаю проекты</span>
         </div>
-
-        <div class="footer">
-          <div>© <span id="y"></span> Динар Динмухаметов</div>
-          <div>Hosted on GitHub Pages</div>
-        </div>
-
       </div>
-    </section>
-  </div>
+    </div>
+  </header>
 
-  <div class="toast" id="toast" role="status" aria-live="polite">Скопировано: db@dinardb.ru</div>
+  <main>
+    <div class="container">
+      <section class="hero">
+        <div class="hero-label">Консалтинг</div>
+        <h2>Запуск бизнеса в онлайне за 2 недели</h2>
+        <p class="hero-lead">
+          Помогаю микробизнесу и специалистам выйти в онлайн: сайт, Telegram-бот, план развития. Без воды, по делу.
+        </p>
+        
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:db@dinardb.ru?subject=Запрос%20с%20dinar.agency">
+            Написать на почту
+          </a>
+          <a class="btn btn-secondary" href="https://t.me/mrdinar" target="_blank" rel="noopener">
+            Telegram
+          </a>
+          <button class="btn btn-secondary" type="button" id="copyBtn">
+            Скопировать email
+          </button>
+        </div>
+      </section>
+
+      <div class="section-title">Услуги</div>
+      <section class="services">
+        <div class="service-card">
+          <h3>Аудит и анализ ниши</h3>
+          <p>Изучаю конкурентов, цены, позиционирование. Даю конкретные рекомендации по входу в рынок.</p>
+        </div>
+        <div class="service-card">
+          <h3>Сайт-визитка или лендинг</h3>
+          <p>Создаю профессиональный сайт с адаптивным дизайном и SEO-оптимизацией.</p>
+        </div>
+        <div class="service-card">
+          <h3>Telegram-бот для заявок</h3>
+          <p>Настраиваю автоматический сбор контактов и заявок через Telegram-бота.</p>
+        </div>
+        <div class="service-card">
+          <h3>План развития на 3 месяца</h3>
+          <p>Составляю дорожную карту с контрольными точками, рисками и критериями успеха.</p>
+        </div>
+      </section>
+
+      <div class="section-title">Консультации по AI-инструментам</div>
+      <div class="consultation-intro">
+        <p>Помогу освоить современные AI-инструменты для вашего бизнеса: настройка, советы, подключение.</p>
+      </div>
+      <section class="consultation-packages">
+        <div class="package-card">
+          <h4>ChatGPT</h4>
+          <ul>
+            <li>Настройка и подключение</li>
+            <li>Готовые промпты под задачи</li>
+            <li>Автоматизация рутины</li>
+            <li>Примеры использования</li>
+          </ul>
+        </div>
+        <div class="package-card">
+          <h4>Gemini</h4>
+          <ul>
+            <li>Регистрация и вход</li>
+            <li>Базовые настройки</li>
+            <li>Разбор возможностей</li>
+            <li>Интеграция в работу</li>
+          </ul>
+        </div>
+        <div class="package-card">
+          <h4>Genspark</h4>
+          <ul>
+            <li>Обзор функционала</li>
+            <li>Настройка под задачи</li>
+            <li>Примеры применения</li>
+            <li>Советы по работе</li>
+          </ul>
+        </div>
+        <div class="package-card">
+          <h4>Manus</h4>
+          <ul>
+            <li>Подключение и настройка</li>
+            <li>Разбор инструментов</li>
+            <li>Автоматизация задач</li>
+            <li>Шпаргалка по работе</li>
+          </ul>
+        </div>
+        <div class="package-card">
+          <h4>Perplexity</h4>
+          <ul>
+            <li>Регистрация и вход</li>
+            <li>Поиск и исследования</li>
+            <li>Работа с источниками</li>
+            <li>Практические кейсы</li>
+          </ul>
+        </div>
+      </section>
+
+      <div class="section-title">Контакты</div>
+      <section class="contact-section">
+        <h3>Связь</h3>
+        <div class="contact-grid">
+          <div class="contact-row">
+            <span>Email</span>
+            <span>db@dinardb.ru</span>
+          </div>
+          <div class="contact-row">
+            <span>Telegram</span>
+            <span>@mrdinar</span>
+          </div>
+          <div class="contact-row">
+            <span>Домен</span>
+            <span>dinar.agency</span>
+          </div>
+          <div class="contact-row">
+            <span>Локация</span>
+            <span>Москва</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div>© <span id="year"></span> Динар Динмухаметов</div>
+        <div>Hosted on GitHub Pages</div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast">Скопировано: db@dinardb.ru</div>
 
   <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+    document.getElementById('year').textContent = new Date().getFullYear();
 
     const email = 'db@dinardb.ru';
     const copyBtn = document.getElementById('copyBtn');
@@ -543,7 +560,7 @@
       toast.textContent = text;
       toast.classList.add('show');
       clearTimeout(showToast._t);
-      showToast._t = setTimeout(() => toast.classList.remove('show'), 1400);
+      showToast._t = setTimeout(() => toast.classList.remove('show'), 1800);
     }
 
     copyBtn.addEventListener('click', async () => {
