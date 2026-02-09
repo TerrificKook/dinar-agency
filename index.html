@@ -9,14 +9,13 @@
   <meta name="keywords" content="запуск бизнеса онлайн, создание сайта, telegram бот, консультации AI, ChatGPT, Gemini, Manus, Perplexity, digital консалтинг" />
   <meta name="author" content="Динар Динмухаметов" />
   <meta name="robots" content="index,follow" />
-  <meta name="theme-color" content="#111111" />
+  <meta name="theme-color" content="#0a0a0a" />
 
   <meta property="og:title" content="Динар Динмухаметов — Запуск бизнеса в онлайне" />
   <meta property="og:description" content="Помогаю микробизнесу и специалистам выйти в онлайн: сайт, Telegram-бот, план развития. Консультации по AI-инструментам." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://dinar.agency/" />
 
-  <!-- Structured Data -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,125 +34,132 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     *{ box-sizing:border-box; margin:0; padding:0; }
     html,body{ height:100%; }
     body{
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: #111111;
-      background: #ffffff;
+      color: #ffffff;
+      background: #0a0a0a;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
     .container{
-      max-width: 1080px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 0 32px;
+      padding: 0 40px;
     }
 
     header{
-      padding: 48px 0 32px;
-      border-bottom: 1px solid #e5e5e5;
+      padding: 32px 0;
+      border-bottom: 1px solid #1a1a1a;
+      position: sticky;
+      top: 0;
+      background: rgba(10, 10, 10, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 100;
     }
 
     .header-content{
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 48px;
     }
 
     .brand{
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 16px;
     }
 
     .brand-photo img{
-      width: 56px;
-      height: 56px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       object-fit: cover;
       filter: brightness(1.05) contrast(1.05);
     }
 
     .brand-text h1{
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
-      color: #111111;
-      letter-spacing: -0.02em;
+      color: #ffffff;
+      letter-spacing: -0.01em;
     }
 
     .brand-text p{
-      font-size: 14px;
-      color: #666666;
-      margin-top: 4px;
-      font-weight: 500;
-    }
-
-    .status{
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 16px;
-      border-radius: 24px;
-      background: #f5f5f5;
       font-size: 13px;
-      color: #111111;
+      color: #888888;
+      margin-top: 2px;
       font-weight: 500;
     }
 
-    .status-dot{
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: #10b981;
+    .header-contact{
+      display: flex;
+      gap: 16px;
+      align-items: center;
     }
 
-    main{
-      padding: 120px 0 160px;
+    .header-contact a{
+      font-size: 14px;
+      color: #888888;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 180ms ease;
+    }
+
+    .header-contact a:hover{
+      color: #ffffff;
     }
 
     .hero{
-      max-width: 720px;
+      min-height: calc(100vh - 120px);
+      display: flex;
+      align-items: center;
+      padding: 80px 0;
+    }
+
+    .hero-content{
+      max-width: 900px;
     }
 
     .hero-label{
       display: inline-block;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       color: #666666;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
 
     .hero h2{
-      font-size: 64px;
-      font-weight: 700;
-      line-height: 1.1;
-      color: #111111;
+      font-size: 72px;
+      font-weight: 800;
+      line-height: 1.05;
+      color: #ffffff;
       margin-bottom: 32px;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
     }
 
     .hero-lead{
-      font-size: 20px;
-      line-height: 1.7;
-      color: #444444;
+      font-size: 22px;
+      line-height: 1.6;
+      color: #aaaaaa;
       margin-bottom: 48px;
       font-weight: 500;
+      max-width: 700px;
     }
 
     .actions{
       display: flex;
       gap: 16px;
       flex-wrap: wrap;
-      margin-bottom: 96px;
+      margin-bottom: 80px;
     }
 
     .btn{
@@ -162,7 +168,7 @@
       justify-content: center;
       gap: 8px;
       padding: 16px 32px;
-      border-radius: 8px;
+      border-radius: 6px;
       font-size: 15px;
       font-weight: 600;
       text-decoration: none;
@@ -173,171 +179,126 @@
     }
 
     .btn-primary{
-      background: #111111;
-      color: #ffffff;
+      background: #ffffff;
+      color: #0a0a0a;
     }
     .btn-primary:hover{
-      background: #000000;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      background: #f5f5f5;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,255,255,0.15);
     }
 
     .btn-secondary{
-      background: #f5f5f5;
-      color: #111111;
+      background: transparent;
+      color: #ffffff;
+      border: 1px solid #333333;
     }
     .btn-secondary:hover{
-      background: #e5e5e5;
+      border-color: #666666;
+      background: #1a1a1a;
     }
 
-    .section-title{
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #666666;
-      margin-bottom: 32px;
-    }
-
-    .services{
+    .services-grid{
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 120px;
+      gap: 2px;
+      background: #1a1a1a;
+      border: 1px solid #1a1a1a;
+      margin-bottom: 2px;
     }
 
-    .service-card{
-      padding: 40px;
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
-      background: #fafafa;
-      transition: all 180ms ease;
+    .service-item{
+      padding: 48px;
+      background: #0a0a0a;
+      transition: background 180ms ease;
     }
 
-    .service-card:hover{
-      border-color: #d5d5d5;
-      background: #f5f5f5;
+    .service-item:hover{
+      background: #111111;
     }
 
-    .service-card h3{
-      font-size: 20px;
-      font-weight: 600;
-      color: #111111;
-      margin-bottom: 12px;
+    .service-item h3{
+      font-size: 24px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
       letter-spacing: -0.02em;
     }
 
-    .service-card p{
-      font-size: 15px;
-      color: #555555;
+    .service-item p{
+      font-size: 16px;
+      color: #888888;
       line-height: 1.6;
       font-weight: 500;
     }
 
-    .consultation-intro{
-      max-width: 720px;
-      margin-bottom: 40px;
+    .ai-section{
+      background: #0a0a0a;
+      padding: 48px;
+      border: 1px solid #1a1a1a;
     }
 
-    .consultation-intro p{
+    .ai-section h3{
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 16px;
+      letter-spacing: -0.03em;
+    }
+
+    .ai-section p{
       font-size: 18px;
-      line-height: 1.7;
-      color: #444444;
+      color: #888888;
+      margin-bottom: 40px;
       font-weight: 500;
     }
 
-    .consultation-packages{
+    .ai-grid{
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 120px;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      background: #1a1a1a;
     }
 
-    .package-card{
-      padding: 32px;
-      border: 1px solid #e5e5e5;
-      border-radius: 12px;
-      background: #fafafa;
-      transition: all 180ms ease;
+    .ai-item{
+      padding: 32px 24px;
+      background: #0a0a0a;
+      transition: background 180ms ease;
     }
 
-    .package-card:hover{
-      border-color: #d5d5d5;
-      background: #f5f5f5;
+    .ai-item:hover{
+      background: #111111;
     }
 
-    .package-card h4{
+    .ai-item h4{
       font-size: 18px;
-      font-weight: 600;
-      color: #111111;
+      font-weight: 700;
+      color: #ffffff;
       margin-bottom: 20px;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
 
-    .package-card ul{
+    .ai-item ul{
       list-style: none;
       padding: 0;
     }
 
-    .package-card li{
-      padding: 10px 0;
-      color: #555555;
-      font-size: 14px;
+    .ai-item li{
+      padding: 8px 0;
+      color: #666666;
+      font-size: 13px;
       font-weight: 500;
-      border-bottom: 1px solid #e5e5e5;
+      border-bottom: 1px solid #1a1a1a;
     }
 
-    .package-card li:last-child{
+    .ai-item li:last-child{
       border-bottom: none;
     }
 
-    .contact-section{
-      max-width: 520px;
-      padding: 48px;
-      border: 1px solid #e5e5e5;
-      border-radius: 16px;
-      background: #fafafa;
-    }
-
-    .contact-section h3{
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #666666;
-      margin-bottom: 24px;
-    }
-
-    .contact-grid{
-      display: grid;
-      gap: 16px;
-    }
-
-    .contact-row{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      background: #ffffff;
-      font-size: 14px;
-    }
-
-    .contact-row span:first-child{
-      color: #666666;
-      font-weight: 500;
-    }
-
-    .contact-row span:last-child{
-      color: #111111;
-      font-weight: 600;
-    }
-
     footer{
-      border-top: 1px solid #e5e5e5;
+      border-top: 1px solid #1a1a1a;
       padding: 48px 0;
-      margin-top: 80px;
+      margin-top: 120px;
     }
 
     .footer-content{
@@ -346,9 +307,24 @@
       align-items: center;
       gap: 16px;
       font-size: 13px;
-      color: #999999;
+      color: #666666;
       font-weight: 500;
       flex-wrap: wrap;
+    }
+
+    .footer-links{
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a{
+      color: #666666;
+      text-decoration: none;
+      transition: color 180ms ease;
+    }
+
+    .footer-links a:hover{
+      color: #ffffff;
     }
 
     .toast{
@@ -357,12 +333,12 @@
       bottom: 32px;
       transform: translateX(-50%);
       padding: 16px 24px;
-      border-radius: 8px;
-      background: #111111;
-      color: #ffffff;
+      border-radius: 6px;
+      background: #ffffff;
+      color: #0a0a0a;
       font-size: 14px;
-      font-weight: 500;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      font-weight: 600;
+      box-shadow: 0 8px 24px rgba(255,255,255,0.2);
       opacity: 0;
       pointer-events: none;
       transition: opacity 200ms ease;
@@ -370,30 +346,29 @@
     }
     .toast.show{ opacity: 1; }
 
+    @media (max-width: 1024px){
+      .ai-grid{ grid-template-columns: repeat(3, 1fr); }
+    }
+
     @media (max-width: 768px){
       .hero h2{ font-size: 48px; }
       .hero-lead{ font-size: 18px; }
-      .header-content{ flex-direction: column; align-items: flex-start; gap: 16px; }
-      .status{ display: none; }
-      .services{ grid-template-columns: 1fr; }
-      .service-card{ padding: 32px; }
-      .consultation-packages{ grid-template-columns: 1fr; }
-      .package-card{ padding: 28px; }
-      .contact-section{ padding: 32px; }
-      main{ padding: 80px 0 120px; }
+      .services-grid{ grid-template-columns: 1fr; }
+      .service-item{ padding: 32px; }
+      .ai-grid{ grid-template-columns: 1fr; }
+      .ai-section{ padding: 32px; }
+      .header-contact{ display: none; }
+      .container{ padding: 0 24px; }
     }
 
     @media (max-width: 480px){
       .hero h2{ font-size: 36px; }
       .hero-lead{ font-size: 16px; }
-      .consultation-intro p{ font-size: 16px; }
       .btn{ width: 100%; padding: 14px 24px; }
-      .service-card{ padding: 24px; }
-      .package-card{ padding: 24px; }
-      .contact-section{ padding: 24px; }
-      .container{ padding: 0 20px; }
-      main{ padding: 60px 0 100px; }
-      .brand-photo img{ width: 48px; height: 48px; }
+      .service-item{ padding: 24px; }
+      .ai-section{ padding: 24px; }
+      .ai-item{ padding: 24px 20px; }
+      .brand-photo img{ width: 40px; height: 40px; }
     }
   </style>
 </head>
@@ -408,12 +383,12 @@
           </div>
           <div class="brand-text">
             <h1>Динар Динмухаметов</h1>
-            <p>Операционный консультант, Москва</p>
+            <p>Операционный консультант</p>
           </div>
         </div>
-        <div class="status">
-          <span class="status-dot"></span>
-          <span>Принимаю проекты</span>
+        <div class="header-contact">
+          <a href="mailto:db@dinardb.ru">db@dinardb.ru</a>
+          <a href="https://t.me/mrdinar" target="_blank" rel="noopener">Telegram</a>
         </div>
       </div>
     </div>
@@ -422,116 +397,95 @@
   <main>
     <div class="container">
       <section class="hero">
-        <div class="hero-label">Консалтинг</div>
-        <h2>Запуск бизнеса в онлайне за 2 недели</h2>
-        <p class="hero-lead">
-          Помогаю микробизнесу и специалистам выйти в онлайн: сайт, Telegram-бот, план развития. Без воды, по делу.
-        </p>
-        
-        <div class="actions">
-          <a class="btn btn-primary" href="mailto:db@dinardb.ru?subject=Запрос%20с%20dinar.agency">
-            Написать на почту
-          </a>
-          <a class="btn btn-secondary" href="https://t.me/mrdinar" target="_blank" rel="noopener">
-            Telegram
-          </a>
-          <button class="btn btn-secondary" type="button" id="copyBtn">
-            Скопировать email
-          </button>
+        <div class="hero-content">
+          <div class="hero-label">Консалтинг</div>
+          <h2>Запуск бизнеса в онлайне за 2 недели</h2>
+          <p class="hero-lead">
+            Помогаю микробизнесу и специалистам выйти в онлайн: сайт, Telegram-бот, план развития. Консультации по AI-инструментам. Без воды, по делу.
+          </p>
+          
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:db@dinardb.ru?subject=Запрос%20с%20dinar.agency">
+              Написать на почту
+            </a>
+            <a class="btn btn-secondary" href="https://t.me/mrdinar" target="_blank" rel="noopener">
+              Telegram
+            </a>
+            <button class="btn btn-secondary" type="button" id="copyBtn">
+              Скопировать email
+            </button>
+          </div>
         </div>
       </section>
 
-      <div class="section-title">Услуги</div>
-      <section class="services">
-        <div class="service-card">
+      <section class="services-grid">
+        <div class="service-item">
           <h3>Аудит и анализ ниши</h3>
           <p>Изучаю конкурентов, цены, позиционирование. Даю конкретные рекомендации по входу в рынок.</p>
         </div>
-        <div class="service-card">
+        <div class="service-item">
           <h3>Сайт-визитка или лендинг</h3>
           <p>Создаю профессиональный сайт с адаптивным дизайном и SEO-оптимизацией.</p>
         </div>
-        <div class="service-card">
+        <div class="service-item">
           <h3>Telegram-бот для заявок</h3>
           <p>Настраиваю автоматический сбор контактов и заявок через Telegram-бота.</p>
         </div>
-        <div class="service-card">
+        <div class="service-item">
           <h3>План развития на 3 месяца</h3>
           <p>Составляю дорожную карту с контрольными точками, рисками и критериями успеха.</p>
         </div>
       </section>
 
-      <div class="section-title">Консультации по AI-инструментам</div>
-      <div class="consultation-intro">
+      <section class="ai-section">
+        <h3>Консультации по AI-инструментам</h3>
         <p>Помогу освоить современные AI-инструменты для вашего бизнеса: настройка, советы, подключение.</p>
-      </div>
-      <section class="consultation-packages">
-        <div class="package-card">
-          <h4>ChatGPT</h4>
-          <ul>
-            <li>Настройка и подключение</li>
-            <li>Готовые промпты под задачи</li>
-            <li>Автоматизация рутины</li>
-            <li>Примеры использования</li>
-          </ul>
-        </div>
-        <div class="package-card">
-          <h4>Gemini</h4>
-          <ul>
-            <li>Регистрация и вход</li>
-            <li>Базовые настройки</li>
-            <li>Разбор возможностей</li>
-            <li>Интеграция в работу</li>
-          </ul>
-        </div>
-        <div class="package-card">
-          <h4>Genspark</h4>
-          <ul>
-            <li>Обзор функционала</li>
-            <li>Настройка под задачи</li>
-            <li>Примеры применения</li>
-            <li>Советы по работе</li>
-          </ul>
-        </div>
-        <div class="package-card">
-          <h4>Manus</h4>
-          <ul>
-            <li>Подключение и настройка</li>
-            <li>Разбор инструментов</li>
-            <li>Автоматизация задач</li>
-            <li>Шпаргалка по работе</li>
-          </ul>
-        </div>
-        <div class="package-card">
-          <h4>Perplexity</h4>
-          <ul>
-            <li>Регистрация и вход</li>
-            <li>Поиск и исследования</li>
-            <li>Работа с источниками</li>
-            <li>Практические кейсы</li>
-          </ul>
-        </div>
-      </section>
-
-      <div class="section-title">Контакты</div>
-      <section class="contact-section">
-        <h3>Связь</h3>
-        <div class="contact-grid">
-          <div class="contact-row">
-            <span>Email</span>
-            <span>db@dinardb.ru</span>
+        
+        <div class="ai-grid">
+          <div class="ai-item">
+            <h4>ChatGPT</h4>
+            <ul>
+              <li>Настройка и подключение</li>
+              <li>Готовые промпты под задачи</li>
+              <li>Автоматизация рутины</li>
+              <li>Примеры использования</li>
+            </ul>
           </div>
-          <div class="contact-row">
-            <span>Telegram</span>
-            <span>@mrdinar</span>
+          <div class="ai-item">
+            <h4>Gemini</h4>
+            <ul>
+              <li>Регистрация и вход</li>
+              <li>Базовые настройки</li>
+              <li>Разбор возможностей</li>
+              <li>Интеграция в работу</li>
+            </ul>
           </div>
-          <div class="contact-row">
-            <span>Домен</span>
-            <span>dinar.agency</span>
+          <div class="ai-item">
+            <h4>Genspark</h4>
+            <ul>
+              <li>Обзор функционала</li>
+              <li>Настройка под задачи</li>
+              <li>Примеры применения</li>
+              <li>Советы по работе</li>
+            </ul>
           </div>
-          <div class="contact-row">
-            <span>Локация</span>
-            <span>Москва</span>
+          <div class="ai-item">
+            <h4>Manus</h4>
+            <ul>
+              <li>Подключение и настройка</li>
+              <li>Разбор инструментов</li>
+              <li>Автоматизация задач</li>
+              <li>Шпаргалка по работе</li>
+            </ul>
+          </div>
+          <div class="ai-item">
+            <h4>Perplexity</h4>
+            <ul>
+              <li>Регистрация и вход</li>
+              <li>Поиск и исследования</li>
+              <li>Работа с источниками</li>
+              <li>Практические кейсы</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -542,7 +496,11 @@
     <div class="container">
       <div class="footer-content">
         <div>© <span id="year"></span> Динар Динмухаметов</div>
-        <div>Hosted on GitHub Pages</div>
+        <div class="footer-links">
+          <a href="mailto:db@dinardb.ru">db@dinardb.ru</a>
+          <a href="https://t.me/mrdinar" target="_blank" rel="noopener">@mrdinar</a>
+          <span>Москва</span>
+        </div>
       </div>
     </div>
   </footer>
