@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
 
     <!-- Structured Data (JSON-LD) -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" defer></script>
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -34,7 +36,6 @@
         "url": "https://dinar.agency",
         "logo": "https://dinar.agency/images/logo.png",
         "image": "https://dinar.agency/images/dinar-photo.png",
-        "email": "db@dinardb.ru",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Москва",
@@ -114,9 +115,9 @@
                         <i class="fab fa-telegram-plane"></i>
                         Написать в Telegram
                     </a>
-                    <a href="mailto:db@dinardb.ru" aria-label="Написать на email db@dinardb.ru" class="btn btn-secondary">
+                    <a href="#contact" class="btn btn-secondary">
                         <i class="fas fa-envelope"></i>
-                        Написать на почту
+                        Оставить заявку
                     </a>
                 </div>
             </div>
@@ -368,17 +369,53 @@
                         </div>
                         <i class="fas fa-arrow-right contact-card-arrow"></i>
                     </a>
-                    <a href="mailto:db@dinardb.ru" aria-label="Написать на email db@dinardb.ru" class="contact-card contact-card-email">
+
+                    <div class="contact-card contact-card-email" id="emailCard" data-email-user="site" data-email-domain="dinardb" data-email-zone="ru">
                         <div class="contact-card-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-card-text">
-                            <span class="contact-card-label">Email</span>
-                            <span class="contact-card-value">db@dinardb.ru <span class="__cf_email__" data-cfemail="2e4a4c6e4a47404f5c4a4c005c5b" aria-hidden="true" style="display:none;">[email&#160;protected]</span></span>
+                            <span class="contact-card-label">Email alias</span>
+                            <button type="button" class="email-reveal-btn" id="showEmailBtn">Показать email</button>
+                            <a href="#" class="contact-card-value email-hidden" id="emailLink" hidden aria-live="polite"></a>
                         </div>
-                        <i class="fas fa-arrow-right contact-card-arrow"></i>
-                    </a>
+                    </div>
                 </div>
+
+                <form class="contact-form" id="contactForm" action="/api/contact" method="post" novalidate>
+                    <h3 class="contact-form-title">Или отправьте заявку через форму</h3>
+                    <p class="contact-form-note">Ответ приходит на указанный вами email. Используется антиспам-защита.</p>
+
+                    <div class="form-grid">
+                        <label class="form-field">
+                            <span>Ваше имя</span>
+                            <input type="text" name="name" autocomplete="name" minlength="2" maxlength="80" required>
+                        </label>
+                        <label class="form-field">
+                            <span>Email для ответа</span>
+                            <input type="email" name="email" autocomplete="email" maxlength="120" required>
+                        </label>
+                    </div>
+
+                    <label class="form-field">
+                        <span>Коротко о задаче</span>
+                        <textarea name="message" rows="5" minlength="20" maxlength="2000" required></textarea>
+                    </label>
+
+                    <div class="form-honeypot" aria-hidden="true">
+                        <label for="company_website">Не заполняйте это поле</label>
+                        <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <input type="hidden" name="form_started_at" id="formStartedAt">
+                    <div class="cf-turnstile" data-sitekey="1x00000000000000000000AA" data-theme="dark"></div>
+
+                    <button class="btn btn-primary form-submit" type="submit">
+                        <i class="fas fa-paper-plane"></i>
+                        Отправить заявку
+                    </button>
+                    <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+                </form>
             </div>
         </div>
     </section>
@@ -410,8 +447,8 @@
                         <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="footer-link">
                             <i class="fab fa-telegram-plane"></i> Telegram
                         </a>
-                        <a href="mailto:db@dinardb.ru" aria-label="Написать на email db@dinardb.ru" class="footer-link">
-                            <i class="fas fa-envelope"></i> db@dinardb.ru <span class="__cf_email__" data-cfemail="bfdbddffdbd6d1decddbdd91cdca" aria-hidden="true" style="display:none;">[email&#160;protected]</span>
+                        <a href="#contact" class="footer-link">
+                            <i class="fas fa-envelope"></i> Форма обратной связи
                         </a>
                     </div>
                 </div>
