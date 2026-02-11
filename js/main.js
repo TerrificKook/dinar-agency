@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavbarScroll();
     initSmoothScroll();
     initScrollAnimations();
+    initEmailFallback();
 });
 
 // ==================
@@ -165,4 +166,56 @@ function initScrollAnimations() {
     document.querySelectorAll('.animate-on-scroll').forEach(el => {
         observer.observe(el);
     });
+}
+
+// ==================
+// Cloudflare Email Fallback
+// ==================
+function initEmailFallback() {
+    const protectedNodes = Array.from(document.querySelectorAll('.__cf_email__'));
+    if (!protectedNodes.length) return;
+
+    const hasUnresolvedEmail = protectedNodes.some((node) => needsEmailFallback(node));
+    if (!hasUnresolvedEmail) return;
+
+    protectedNodes.forEach((node) => {
+        const fallbackEmail = buildFallbackEmail(node);
+        if (!fallbackEmail) return;
+
+        node.textContent = fallbackEmail;
+
+        const fallbackLink = node.closest('a[data-email-fallback]') || node.closest('a[href*="/cdn-cgi/l/email-protection"]');
+        if (fallbackLink) {
+            fallbackLink.setAttribute('href', `mailto:${fallbackEmail}`);
+        }
+    });
+
+    document.querySelectorAll('a[data-email-fallback], a[href*="/cdn-cgi/l/email-protection"]').forEach((link) => {
+        if (!isProtectedEmailLink(link)) return;
+
+        const fallbackEmail = buildFallbackEmail(link);
+        if (!fallbackEmail) return;
+
+        link.setAttribute('href', `mailto:${fallbackEmail}`);
+    });
+}
+
+function needsEmailFallback(node) {
+    const rawText = (node.textContent || '').replace(/ /g, ' ').trim().toLowerCase();
+    return rawText.includes('[email protected]') || rawText.includes('[email protected]') || rawText.includes('[email');
+}
+
+function buildFallbackEmail(node) {
+    const fallback = node.getAttribute('data-email-fallback');
+    if (!fallback) return '';
+
+    const parts = fallback.split('|').map((part) => part.trim()).filter(Boolean);
+    if (parts.length !== 2) return '';
+
+    return `${parts[0]}@${parts[1]}`;
+}
+
+function isProtectedEmailLink(link) {
+    const href = link.getAttribute('href') || '';
+    return href.includes('/cdn-cgi/l/email-protection');
 }
