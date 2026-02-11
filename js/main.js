@@ -7,8 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavbarScroll();
     initSmoothScroll();
     initScrollAnimations();
-    initEmailReveal();
-    initContactFormProtection();
+    initEmailProtection();
 });
 
 // ==================
@@ -169,100 +168,36 @@ function initScrollAnimations() {
     });
 }
 
-// ==================
-// Email Reveal
-// ==================
-function initEmailReveal() {
-    const card = document.getElementById('emailCard');
-    const revealBtn = document.getElementById('showEmailBtn');
-    const emailLink = document.getElementById('emailLink');
-
-    if (!card || !revealBtn || !emailLink) return;
-
-    revealBtn.addEventListener('click', () => {
-        const user = card.dataset.emailUser;
-        const domain = card.dataset.emailDomain;
-        const zone = card.dataset.emailZone;
-        const email = `${user}@${domain}.${zone}`;
-
-        emailLink.textContent = email;
-        emailLink.href = `mailto:${email}`;
-        emailLink.hidden = false;
-        revealBtn.hidden = true;
-    });
-}
 
 // ==================
-// Contact Form Anti-bot
+// Email Protection
 // ==================
-function initContactFormProtection() {
-    const form = document.getElementById('contactForm');
-    const startedAt = document.getElementById('formStartedAt');
-    const status = document.getElementById('formStatus');
+function initEmailProtection() {
+    const blocks = document.querySelectorAll('[data-email-b64]');
+    if (!blocks.length) return;
 
-    if (!form || !startedAt || !status) return;
+    blocks.forEach((block) => {
+        const revealBtn = block.querySelector('[data-email-reveal]');
+        const link = block.querySelector('[data-email-link]');
 
-    startedAt.value = String(Date.now());
+        if (!revealBtn || !link) return;
 
-    function setStatus(message, type = '') {
-        status.textContent = message;
-        status.classList.remove('is-error', 'is-success');
-        if (type) {
-            status.classList.add(type);
-        }
-    }
+        revealBtn.addEventListener('click', () => {
+            const encoded = block.getAttribute('data-email-b64') || '';
+            let email = '';
 
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const data = new FormData(form);
-        const honeypot = String(data.get('company_website') || '').trim();
-        if (honeypot.length > 0) {
-            setStatus('Заявка отклонена.', 'is-error');
-            return;
-        }
-
-        const started = Number(data.get('form_started_at') || 0);
-        const elapsed = Date.now() - started;
-        if (!started || elapsed < 4000) {
-            setStatus('Слишком быстрая отправка. Попробуйте через несколько секунд.', 'is-error');
-            return;
-        }
-
-        const tokenField = form.querySelector('[name="cf-turnstile-response"]');
-        if (!tokenField || !tokenField.value) {
-            setStatus('Подтвердите, что вы не робот (Turnstile).', 'is-error');
-            return;
-        }
-
-        const now = Date.now();
-        const storageKey = 'contactFormSubmissions';
-        const existing = JSON.parse(localStorage.getItem(storageKey) || '[]').filter((t) => now - t < 3600000);
-        if (existing.length >= 5) {
-            setStatus('Слишком много отправок с этого устройства. Повторите позже.', 'is-error');
-            return;
-        }
-        existing.push(now);
-        localStorage.setItem(storageKey, JSON.stringify(existing));
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: data,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error('Request failed');
+            try {
+                email = atob(encoded).trim();
+            } catch (error) {
+                return;
             }
 
-            form.reset();
-            startedAt.value = String(Date.now());
-            setStatus('Спасибо! Заявка отправлена. Отвечу в ближайшее время.', 'is-success');
-        } catch (error) {
-            setStatus('Не удалось отправить форму. Напишите в Telegram, если ошибка повторится.', 'is-error');
-        }
+            if (!email || !email.includes('@')) return;
+
+            link.textContent = email;
+            link.href = `mailto:${email}`;
+            link.hidden = false;
+            revealBtn.hidden = true;
+        });
     });
 }
