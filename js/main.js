@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initScrollAnimations();
     initEmailProtection();
+    initTelegramProtection();
 });
 
 // ==================
@@ -196,6 +197,39 @@ function initEmailProtection() {
 
             link.textContent = email;
             link.href = `mailto:${email}`;
+            link.hidden = false;
+            revealBtn.hidden = true;
+        });
+    });
+}
+
+
+// ==================
+// Telegram Protection
+// ==================
+function initTelegramProtection() {
+    const blocks = document.querySelectorAll('[data-telegram-b64]');
+    if (!blocks.length) return;
+
+    blocks.forEach((block) => {
+        const revealBtn = block.querySelector('[data-telegram-reveal]');
+        const link = block.querySelector('[data-telegram-link]');
+
+        if (!revealBtn || !link) return;
+
+        revealBtn.addEventListener('click', () => {
+            const encoded = block.getAttribute('data-telegram-b64') || '';
+            let handle = '';
+
+            try {
+                handle = atob(encoded).trim();
+            } catch (error) {
+                return;
+            }
+
+            if (!handle || !handle.startsWith('@')) return;
+
+            link.textContent = handle;
             link.hidden = false;
             revealBtn.hidden = true;
         });
