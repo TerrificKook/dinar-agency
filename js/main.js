@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initEmailProtection();
     initTelegramProtection();
+    initFAQ();
 });
 
 // ==================
@@ -135,7 +136,8 @@ function initScrollAnimations() {
         '.audience-card',
         '.about-content',
         '.contact-card',
-        '.value-item'
+        '.value-item',
+        '.faq-item'
     ];
     
     animateSelectors.forEach(selector => {
@@ -232,6 +234,35 @@ function initTelegramProtection() {
             link.textContent = handle;
             link.hidden = false;
             revealBtn.hidden = true;
+        });
+    });
+}
+
+
+// ==================
+// FAQ Accordion
+// ==================
+function initFAQ() {
+    const items = document.querySelectorAll('.faq-item');
+    if (!items.length) return;
+
+    items.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        if (!question) return;
+
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+            
+            // Close all
+            items.forEach(i => i.classList.remove('active'));
+            
+            // Open clicked (if it was closed)
+            if (!isActive) {
+                item.classList.add('active');
+                question.setAttribute('aria-expanded', 'true');
+            } else {
+                question.setAttribute('aria-expanded', 'false');
+            }
         });
     });
 }
