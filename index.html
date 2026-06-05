@@ -9,6 +9,7 @@
     <meta name="author" content="Динар Динмухаметов">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://dinar.agency/">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     
     <meta property="og:title" content="Dinar.agency — упакую бизнес в онлайне за 2 недели">
     <meta property="og:description" content="Позиционирование, сайт, площадки, автоматизация заявок. Для частных специалистов и микробизнеса. От 15 000 ₽.">
@@ -17,6 +18,19 @@
     <meta property="og:image" content="https://dinar.agency/images/logo.png">
     <meta property="og:locale" content="ru_RU">
     <meta property="og:site_name" content="Dinar.agency">
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109675049', 'ym');
+
+        ym(109675049, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <!-- /Yandex.Metrika counter -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,6 +63,8 @@
     </script>
 </head>
 <body>
+
+    <noscript><div><img src="https://mc.yandex.ru/watch/109675049" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="nav-brand">
@@ -87,14 +103,18 @@
                     Разберусь в вашей услуге, сделаю понятное позиционирование, соберу сайт, подключу площадки и настрою приём заявок.
                     <strong>Вы получите систему, а не просто страничку.</strong>
                 </p>
+                <div class="hero-highlights" aria-label="Ключевая информация">
+                    <span><i class="fas fa-location-dot"></i> Москва · онлайн по России</span>
+                    <span><i class="fas fa-comments"></i> Бесплатный разбор: напишите вашу ситуацию — предложу варианты решения в течение 2 рабочих дней</span>
+                </div>
                 <div class="hero-actions">
-                    <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="btn btn-primary">
+                    <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="btn btn-primary" data-analytics-goal="telegram_click_hero">
                         <i class="fab fa-telegram-plane"></i>
-                        Написать в Telegram
+                        Получить бесплатный разбор
                     </a>
-                    <a href="#contact" class="btn btn-secondary">
+                    <a href="#contact" class="btn btn-secondary" data-analytics-goal="contact_anchor_hero">
                         <i class="fas fa-envelope"></i>
-                        Связаться по email
+                        Написать ситуацию по email
                     </a>
                 </div>
             </div>
@@ -223,10 +243,10 @@
             </div>
 
             <div class="services-cta">
-                <p>Не знаете, какой пакет подходит? Напишите задачу, подскажу за 5 минут.</p>
-                <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="btn btn-primary">
+                <p>Не знаете, какой пакет подходит? Напишите вашу ситуацию и в чём нужна помощь — предложу варианты решения в течение 2 рабочих дней.</p>
+                <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="btn btn-primary" data-analytics-goal="telegram_click_services">
                     <i class="fab fa-telegram-plane"></i>
-                    Написать в Telegram
+                    Получить бесплатный разбор
                 </a>
             </div>
         </div>
@@ -262,7 +282,7 @@
                     <div class="portfolio-card-icon"><i class="fas fa-plus"></i></div>
                     <h4>Ваш проект?</h4>
                     <p>Расскажите о задаче, и мы обсудим, как её решить.</p>
-                    <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="portfolio-card-link">Написать в Telegram →</a>
+                    <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="portfolio-card-link" data-analytics-goal="telegram_click_portfolio">Написать в Telegram →</a>
                 </div>
             </div>
 
@@ -309,7 +329,7 @@
                     <h3>AI-консультация под вашу задачу</h3>
                     <p>40 минут, 5 900 ₽. Разберём задачу, подберу инструмент (ChatGPT, Gemini, Perplexity и др.), дам готовые промпты и пошаговый план.</p>
                 </div>
-                <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="btn btn-secondary">
+                <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="btn btn-secondary" data-analytics-goal="telegram_click_ai">
                     <i class="fab fa-telegram-plane"></i>
                     Подробнее
                 </a>
@@ -358,26 +378,26 @@
                     <span class="section-tag">Контакты</span>
                     <h2 class="section-title">Давайте обсудим вашу задачу</h2>
                     <p class="contact-description">
-                        Напишите, кратко опишите задачу. Я отвечу с вариантом решения, сроками и стоимостью. Отвечаю в течение 4 часов в рабочие дни.
+                        Москва · работаю онлайн по России. Напишите вашу ситуацию и в чём нужна помощь — предложу варианты решения, сроки и следующий шаг в течение 2 рабочих дней.
                     </p>
-                    <p class="contact-description"><strong>Первый разбор задачи - 15 минут бесплатно.</strong></p>
+                    <p class="contact-description"><strong>Первый разбор задачи — бесплатно.</strong></p>
                 </div>
                 <div class="contact-cards">
-                    <div class="contact-card contact-card-telegram" data-telegram-b64="QG1yZGluYXI=">
+                    <div class="contact-card contact-card-telegram" data-telegram-b64="QG1yZGluYXI=" data-telegram-reveal-goal="telegram_reveal_contact" data-telegram-click-goal="telegram_click_contact_revealed">
                         <div class="contact-card-icon"><i class="fab fa-telegram-plane"></i></div>
                         <div class="contact-card-text">
                             <span class="contact-card-label">Telegram</span>
-                            <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="contact-card-value">Написать в Telegram</a>
-                            <button type="button" class="email-reveal-btn" data-telegram-reveal>Показать Telegram</button>
+                            <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="contact-card-value" data-analytics-goal="telegram_click_contact">Написать в Telegram</a>
+                            <button type="button" class="email-reveal-btn" data-telegram-reveal data-analytics-goal="telegram_reveal_contact">Показать Telegram</button>
                             <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="contact-card-value" data-telegram-link hidden aria-live="polite"></a>
                         </div>
                         <i class="fas fa-arrow-right contact-card-arrow"></i>
                     </div>
-                    <div class="contact-card contact-card-email" data-email-b64="ZGJAZGluYXJkYi5ydQ==">
+                    <div class="contact-card contact-card-email" data-email-b64="ZGJAZGluYXJkYi5ydQ==" data-email-reveal-goal="email_reveal_contact" data-email-click-goal="email_click_contact">
                         <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
                         <div class="contact-card-text">
                             <span class="contact-card-label">Email</span>
-                            <button type="button" class="email-reveal-btn" data-email-reveal>Показать email</button>
+                            <button type="button" class="email-reveal-btn" data-email-reveal data-analytics-goal="email_reveal_contact">Показать email</button>
                             <a href="#" class="contact-card-value" data-email-link hidden aria-live="polite"></a>
                         </div>
                         <i class="fas fa-arrow-right contact-card-arrow"></i>
@@ -394,7 +414,7 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <span class="brand-text">Dinar.agency</span>
-                    <p class="footer-description">Упаковка бизнеса в онлайне. Позиционирование, сайт, площадки, автоматизация. По делу. С результатом.</p>
+                    <p class="footer-description">Упаковка бизнеса в онлайне. Позиционирование, сайт, площадки, автоматизация. Москва · онлайн по России.</p>
                 </div>
                 <div class="footer-links">
                     <div class="footer-section">
@@ -404,21 +424,21 @@
                         <a href="#portfolio" class="footer-link">Портфолио</a>
                         <a href="#about" class="footer-link">Обо мне</a>
                         <a href="#faq" class="footer-link">Вопросы</a>
-                        <a href="#contact" class="footer-link">Контакты</a>
+                        <a href="#contact" class="footer-link" data-analytics-goal="contact_anchor_footer">Контакты</a>
                     </div>
                     <div class="footer-section">
                         <h4>Связаться</h4>
-                        <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="footer-link"><i class="fab fa-telegram-plane"></i> Telegram</a>
-                        <div class="footer-link footer-email" data-email-b64="ZGJAZGluYXJkYi5ydQ==">
+                        <a href="https://t.me/mrdinar" target="_blank" rel="noopener" class="footer-link" data-analytics-goal="telegram_click_footer"><i class="fab fa-telegram-plane"></i> Telegram</a>
+                        <div class="footer-link footer-email" data-email-b64="ZGJAZGluYXJkYi5ydQ==" data-email-reveal-goal="email_reveal_footer" data-email-click-goal="email_click_footer">
                             <i class="fas fa-envelope"></i>
-                            <button type="button" class="email-reveal-btn footer-email-btn" data-email-reveal>Показать email</button>
+                            <button type="button" class="email-reveal-btn footer-email-btn" data-email-reveal data-analytics-goal="email_reveal_footer">Показать email</button>
                             <a href="#" class="footer-email-link" data-email-link hidden aria-live="polite"></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Dinar.agency &mdash; Динар Динмухаметов. Москва. Все права защищены.</p>
+                <p>&copy; 2026 Dinar.agency &mdash; Динар Динмухаметов. Москва · онлайн по России. Все права защищены.</p>
             </div>
         </div>
     </footer>

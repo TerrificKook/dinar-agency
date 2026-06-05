@@ -1,8 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /js/
-Disallow: /css/
+Allow: /js/
+Allow: /css/
 
 Sitemap: https://dinar.agency/sitemap.xml
-
 Host: dinar.agency
