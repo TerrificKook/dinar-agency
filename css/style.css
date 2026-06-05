@@ -342,6 +342,28 @@ a {
     color: var(--color-text);
 }
 
+.hero-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    max-width: 560px;
+    margin-bottom: var(--spacing-xl);
+}
+
+.hero-highlights span {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.hero-highlights i {
+    color: var(--color-accent);
+    margin-top: 3px;
+}
+
 .hero-actions {
     display: flex;
     gap: var(--spacing-md);
@@ -1332,6 +1354,15 @@ a {
         max-width: 100%;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .hero-highlights {
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .hero-highlights span {
+        justify-content: center;
     }
     
     .hero-actions {

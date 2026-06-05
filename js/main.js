@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initScrollAnimations();
     initEmailProtection();
     initTelegramProtection();
+    initYandexMetrikaGoals();
 });
 
 // ==================
@@ -198,6 +199,12 @@ function initEmailProtection() {
 
             link.textContent = email;
             link.href = `mailto:${email}`;
+
+            const clickGoal = block.getAttribute('data-email-click-goal');
+            if (clickGoal) {
+                link.setAttribute('data-analytics-goal', clickGoal);
+            }
+
             link.hidden = false;
             revealBtn.hidden = true;
         });
@@ -231,8 +238,64 @@ function initTelegramProtection() {
             if (!handle || !handle.startsWith('@')) return;
 
             link.textContent = handle;
+
+            const clickGoal = block.getAttribute('data-telegram-click-goal');
+            if (clickGoal) {
+                link.setAttribute('data-analytics-goal', clickGoal);
+            }
+
             link.hidden = false;
             revealBtn.hidden = true;
         });
+    });
+}
+
+
+// ==================
+// Yandex.Metrika Goals
+// ==================
+function reachYandexMetrikaGoal(goalName, params = {}) {
+    if (!goalName || typeof window.ym !== 'function') return;
+
+    window.ym(109675049, 'reachGoal', goalName, params);
+}
+
+function initYandexMetrikaGoals() {
+    document.addEventListener('click', (event) => {
+        const target = event.target.closest('[data-analytics-goal]');
+        if (!target) return;
+
+        reachYandexMetrikaGoal(target.getAttribute('data-analytics-goal'), {
+            text: target.textContent.trim(),
+            href: target.getAttribute('href') || '',
+            section: target.closest('section')?.id || target.closest('footer')?.className || ''
+        });
+    });
+
+    if (!('IntersectionObserver' in window)) return;
+
+    const scrollGoals = new Map([
+        ['services', 'scroll_services'],
+        ['portfolio', 'scroll_portfolio'],
+        ['contact', 'scroll_contact']
+    ]);
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const goalName = scrollGoals.get(entry.target.id);
+            reachYandexMetrikaGoal(goalName);
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.35
+    });
+
+    scrollGoals.forEach((goalName, sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            observer.observe(section);
+        }
     });
 }
