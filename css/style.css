@@ -1282,6 +1282,14 @@ a {
    Responsive Design
    ================== */
 @media (max-width: 1024px) {
+    .nav-menu {
+        gap: var(--spacing-lg);
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+    }
+
     .hero-container {
         grid-template-columns: 1fr 1fr;
         gap: var(--spacing-xl);
