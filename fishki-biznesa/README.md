@@ -14,6 +14,13 @@ https://dinar.agency/fishki-biznesa/
 - Основная разметка страницы: `index.html`
 - PDF-файлы: `assets/pdf/`
 
+Сейчас в разделе подключены 4 PDF:
+
+- `30-chatgpt-prompts.pdf`
+- `ai-trust-risks.pdf`
+- `client-message-templates.pdf`
+- `seven-days-chatgpt.pdf`
+
 ## Как добавить новую фишку
 
 Откройте `data/content.js` и добавьте новый блок в список `catalog`:
@@ -29,11 +36,11 @@ https://dinar.agency/fishki-biznesa/
 
 Категория появится в фильтрах автоматически.
 
-## Как заменить PDF
+## Как добавить или заменить PDF
 
 1. Положите новый PDF в `assets/pdf/`.
-2. Если имя файла осталось `30-chatgpt-prompts.pdf`, больше ничего менять не нужно.
-3. Если имя другое, обновите ссылку `href` в списке `pdfs` в `data/content.js`.
+2. Обновите ссылку `href` в списке `pdfs` в `data/content.js`.
+3. Проверьте, что карточка PDF на странице открывает нужный файл.
 
 ## Как поменять ссылку на Telegram
 
