@@ -1,301 +1,297 @@
-// =========================================
-// dinar.agency — Main JavaScript
-// =========================================
+"use strict";
 
-document.addEventListener('DOMContentLoaded', function() {
-    initMobileMenu();
-    initNavbarScroll();
-    initSmoothScroll();
-    initScrollAnimations();
-    initEmailProtection();
-    initTelegramProtection();
-    initYandexMetrikaGoals();
+document.addEventListener("DOMContentLoaded", () => {
+    initCurrentYear();
+    initHeader();
+    initMobileNavigation();
+    initEmailReveal();
+    initContactForm();
+    initAnalytics();
 });
 
-// ==================
-// Mobile Menu
-// ==================
-function initMobileMenu() {
-    const toggle = document.getElementById('navToggle');
-    const menu = document.getElementById('navMenu');
-    
+function initCurrentYear() {
+    const year = document.querySelector("#currentYear");
+    if (year) {
+        year.textContent = String(new Date().getFullYear());
+    }
+}
+
+function initHeader() {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+
+    const updateHeader = () => {
+        header.classList.toggle("is-scrolled", window.scrollY > 12);
+    };
+
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+}
+
+function initMobileNavigation() {
+    const toggle = document.querySelector("#navToggle");
+    const menu = document.querySelector("#navMenu");
     if (!toggle || !menu) return;
-    
-    // Create overlay
-    const overlay = document.createElement('div');
-    overlay.className = 'nav-overlay';
-    document.body.appendChild(overlay);
-    
-    function openMenu() {
-        toggle.classList.add('active');
-        menu.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-    
-    function closeMenu() {
-        toggle.classList.remove('active');
-        menu.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-    
-    toggle.addEventListener('click', () => {
-        if (menu.classList.contains('active')) {
+
+    const overlay = document.createElement("div");
+    overlay.className = "nav-overlay";
+    overlay.setAttribute("aria-hidden", "true");
+    document.body.append(overlay);
+
+    const setMenuState = (isOpen) => {
+        toggle.classList.toggle("is-open", isOpen);
+        menu.classList.toggle("is-open", isOpen);
+        overlay.classList.toggle("is-open", isOpen);
+        document.body.classList.toggle("menu-open", isOpen);
+        toggle.setAttribute("aria-expanded", String(isOpen));
+        toggle.setAttribute("aria-label", isOpen ? "Закрыть меню" : "Открыть меню");
+
+        if (isOpen) {
+            menu.querySelector("a")?.focus();
+        }
+    };
+
+    const closeMenu = () => setMenuState(false);
+
+    toggle.addEventListener("click", () => {
+        setMenuState(!menu.classList.contains("is-open"));
+    });
+
+    overlay.addEventListener("click", closeMenu);
+    menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && menu.classList.contains("is-open")) {
             closeMenu();
-        } else {
-            openMenu();
+            toggle.focus();
         }
     });
-    
-    overlay.addEventListener('click', closeMenu);
-    
-    // Close menu when clicking a nav link
-    menu.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', closeMenu);
-    });
-    
-    // Close menu on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && menu.classList.contains('active')) {
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 900 && menu.classList.contains("is-open")) {
             closeMenu();
         }
     });
 }
 
-// ==================
-// Navbar Scroll Effect
-// ==================
-function initNavbarScroll() {
-    const navbar = document.querySelector('.navbar');
-    if (!navbar) return;
-    
-    let lastScrollY = 0;
-    let ticking = false;
-    
-    function updateNavbar() {
-        const currentScrollY = window.scrollY;
-        
-        if (currentScrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        
-        // Hide/show on scroll direction (only after 300px)
-        if (currentScrollY > 300) {
-            if (currentScrollY > lastScrollY && currentScrollY - lastScrollY > 5) {
-                navbar.style.transform = 'translateY(-100%)';
-            } else {
-                navbar.style.transform = 'translateY(0)';
-            }
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-        
-        lastScrollY = currentScrollY;
-        ticking = false;
+function initEmailReveal() {
+    document.querySelectorAll("[data-email-b64]").forEach((block) => {
+        const revealButton = block.querySelector("[data-email-reveal]");
+        const emailLink = block.querySelector("[data-email-link]");
+        if (!revealButton || !emailLink) return;
+
+        revealButton.addEventListener("click", () => {
+            const email = decodeContact(block.getAttribute("data-email-b64"));
+            if (!email || !email.includes("@")) return;
+
+            emailLink.textContent = email;
+            emailLink.href = `mailto:${email}`;
+            emailLink.hidden = false;
+            revealButton.hidden = true;
+            reachGoal("email_reveal_footer");
+        });
+    });
+}
+
+function initContactForm() {
+    const form = document.querySelector("#contactForm");
+    const status = document.querySelector("#formStatus");
+    const emailButton = document.querySelector("#emailDraftButton");
+    if (!form) return;
+
+    const startedAt = Date.now();
+    const startedInput = form.elements.namedItem("form_started_at");
+    if (startedInput) {
+        startedInput.value = String(startedAt);
     }
-    
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(updateNavbar);
-            ticking = true;
+
+    let formStartTracked = false;
+    form.addEventListener("input", () => {
+        if (!formStartTracked) {
+            reachGoal("contact_form_start");
+            formStartTracked = true;
         }
-    }, { passive: true });
-}
+    });
 
-// ==================
-// Smooth Scrolling
-// ==================
-function initSmoothScroll() {
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href === '#') return;
-            
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        setFormStatus(status, "");
+
+        if (!form.reportValidity()) return;
+
+        const honeypot = form.elements.namedItem("company_website");
+        if (honeypot?.value.trim()) {
+            setFormStatus(status, "Не удалось подготовить сообщение. Обновите страницу и попробуйте ещё раз.", true);
+            return;
+        }
+
+        if (Date.now() - startedAt < 4000) {
+            setFormStatus(status, "Проверьте поля и отправьте форму ещё раз через несколько секунд.", true);
+            return;
+        }
+
+        if (!canSubmitContactForm()) {
+            setFormStatus(status, "Лимит подготовленных сообщений достигнут. Напишите напрямую в Telegram.", true);
+            return;
+        }
+
+        const message = buildContactMessage(form);
+        const telegramWindow = window.open("https://t.me/mrdinar", "_blank", "noopener");
+        const copied = await copyText(message);
+
+        if (copied) {
+            rememberContactSubmit();
+            setFormStatus(status, telegramWindow
+                ? "Текст скопирован. Вставьте его в открывшийся диалог Telegram."
+                : "Текст скопирован. Откройте Telegram и отправьте его пользователю @mrdinar.");
+            reachGoal("contact_form_telegram", { copied: true });
+        } else {
+            setFormStatus(status, "Telegram открыт, но браузер не разрешил копирование. Скопируйте данные из полей вручную.", true);
+            reachGoal("contact_form_telegram", { copied: false });
+        }
+    });
+
+    emailButton?.addEventListener("click", () => {
+        const email = decodeContact(emailButton.getAttribute("data-email-b64"));
+        if (!email || !email.includes("@")) return;
+
+        const message = buildContactMessage(form);
+        const subject = "Типовой B2B-запрос — Dinar.agency";
+        window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+        reachGoal("contact_email_draft");
     });
 }
 
-// ==================
-// Scroll Animations
-// ==================
-function initScrollAnimations() {
-    // Mark elements for animation
-    const animateSelectors = [
-        '.service-card',
-        '.audience-card',
-        '.about-content',
-        '.contact-card',
-        '.value-item',
-        '.portfolio-card'
-    ];
-    
-    animateSelectors.forEach(selector => {
-        document.querySelectorAll(selector).forEach(el => {
-            el.classList.add('animate-on-scroll');
-        });
-    });
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                // Stagger the animation
-                const siblings = Array.from(entry.target.parentElement.children)
-                    .filter(child => child.classList.contains('animate-on-scroll'));
-                const idx = siblings.indexOf(entry.target);
-                
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, idx * 100);
-                
-                observer.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
-    });
-    
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-        observer.observe(el);
-    });
+function buildContactMessage(form) {
+    const data = new FormData(form);
+    const value = (name) => String(data.get(name) || "").trim() || "не указано";
+
+    return [
+        "Здравствуйте, Динар!",
+        "",
+        "Хочу разобрать типовой входящий запрос.",
+        `Имя: ${value("name")}`,
+        `Компания / деятельность: ${value("company")}`,
+        `Где приходят заявки: ${value("channels")}`,
+        `Что обычно присылает клиент: ${value("client_data")}`,
+        `Что приходится уточнять: ${value("clarifications")}`,
+        `Обезличенный пример: ${value("example_url")}`,
+        `Контакт для ответа: ${value("contact")}`
+    ].join("\n");
 }
 
-
-// ==================
-// Email Protection
-// ==================
-function initEmailProtection() {
-    const blocks = document.querySelectorAll('[data-email-b64]');
-    if (!blocks.length) return;
-
-    blocks.forEach((block) => {
-        const revealBtn = block.querySelector('[data-email-reveal]');
-        const link = block.querySelector('[data-email-link]');
-
-        if (!revealBtn || !link) return;
-
-        revealBtn.addEventListener('click', () => {
-            const encoded = block.getAttribute('data-email-b64') || '';
-            let email = '';
-
-            try {
-                email = atob(encoded).trim();
-            } catch (error) {
-                return;
-            }
-
-            if (!email || !email.includes('@')) return;
-
-            link.textContent = email;
-            link.href = `mailto:${email}`;
-
-            const clickGoal = block.getAttribute('data-email-click-goal');
-            if (clickGoal) {
-                link.setAttribute('data-analytics-goal', clickGoal);
-            }
-
-            link.hidden = false;
-            revealBtn.hidden = true;
-        });
-    });
+function setFormStatus(element, message, isError = false) {
+    if (!element) return;
+    element.textContent = message;
+    element.classList.toggle("is-error", isError);
 }
 
-
-// ==================
-// Telegram Protection
-// ==================
-function initTelegramProtection() {
-    const blocks = document.querySelectorAll('[data-telegram-b64]');
-    if (!blocks.length) return;
-
-    blocks.forEach((block) => {
-        const revealBtn = block.querySelector('[data-telegram-reveal]');
-        const link = block.querySelector('[data-telegram-link]');
-
-        if (!revealBtn || !link) return;
-
-        revealBtn.addEventListener('click', () => {
-            const encoded = block.getAttribute('data-telegram-b64') || '';
-            let handle = '';
-
-            try {
-                handle = atob(encoded).trim();
-            } catch (error) {
-                return;
-            }
-
-            if (!handle || !handle.startsWith('@')) return;
-
-            link.textContent = handle;
-
-            const clickGoal = block.getAttribute('data-telegram-click-goal');
-            if (clickGoal) {
-                link.setAttribute('data-analytics-goal', clickGoal);
-            }
-
-            link.hidden = false;
-            revealBtn.hidden = true;
-        });
-    });
+function canSubmitContactForm() {
+    try {
+        const key = "dinarAgencyContactSubmits";
+        const now = Date.now();
+        const hour = 60 * 60 * 1000;
+        const recent = JSON.parse(localStorage.getItem(key) || "[]")
+            .filter((timestamp) => Number.isFinite(timestamp) && now - timestamp < hour);
+        return recent.length < 5;
+    } catch {
+        return true;
+    }
 }
 
-
-// ==================
-// Yandex.Metrika Goals
-// ==================
-function reachYandexMetrikaGoal(goalName, params = {}) {
-    if (!goalName || typeof window.ym !== 'function') return;
-
-    window.ym(109675049, 'reachGoal', goalName, params);
+function rememberContactSubmit() {
+    try {
+        const key = "dinarAgencyContactSubmits";
+        const now = Date.now();
+        const hour = 60 * 60 * 1000;
+        const recent = JSON.parse(localStorage.getItem(key) || "[]")
+            .filter((timestamp) => Number.isFinite(timestamp) && now - timestamp < hour);
+        recent.push(now);
+        localStorage.setItem(key, JSON.stringify(recent));
+    } catch {
+        // Local storage can be disabled. The form still works without client-side throttling.
+    }
 }
 
-function initYandexMetrikaGoals() {
-    document.addEventListener('click', (event) => {
-        const target = event.target.closest('[data-analytics-goal]');
+async function copyText(text) {
+    if (!text) return false;
+
+    try {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return true;
+        }
+
+        const temporary = document.createElement("textarea");
+        temporary.value = text;
+        temporary.setAttribute("readonly", "");
+        temporary.style.position = "fixed";
+        temporary.style.opacity = "0";
+        document.body.append(temporary);
+        temporary.select();
+        const copied = document.execCommand("copy");
+        temporary.remove();
+        return copied;
+    } catch {
+        return false;
+    }
+}
+
+function decodeContact(encoded) {
+    if (!encoded) return "";
+    try {
+        return atob(encoded).trim();
+    } catch {
+        return "";
+    }
+}
+
+function initAnalytics() {
+    document.addEventListener("click", (event) => {
+        const target = event.target.closest("[data-analytics-goal]");
         if (!target) return;
 
-        reachYandexMetrikaGoal(target.getAttribute('data-analytics-goal'), {
-            text: target.textContent.trim(),
-            href: target.getAttribute('href') || '',
-            section: target.closest('section')?.id || target.closest('footer')?.className || ''
+        reachGoal(target.getAttribute("data-analytics-goal"), {
+            text: target.textContent.trim().slice(0, 80)
         });
     });
 
-    if (!('IntersectionObserver' in window)) return;
+    document.querySelectorAll(".faq-list details").forEach((item, index) => {
+        item.addEventListener("toggle", () => {
+            if (item.open) {
+                reachGoal("faq_open", { item: index + 1 });
+            }
+        });
+    });
 
-    const scrollGoals = new Map([
-        ['services', 'scroll_services'],
-        ['portfolio', 'scroll_portfolio'],
-        ['contact', 'scroll_contact']
+    const sectionGoals = new Map([
+        ["solutions", "scroll_solutions"],
+        ["demonstration", "scroll_demonstration"],
+        ["process", "scroll_process"],
+        ["about", "scroll_about"],
+        ["faq", "scroll_faq"],
+        ["contact", "scroll_contact"]
     ]);
 
+    if (!("IntersectionObserver" in window)) return;
+
+    const seen = new Set();
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
-            if (!entry.isIntersecting) return;
-
-            const goalName = scrollGoals.get(entry.target.id);
-            reachYandexMetrikaGoal(goalName);
+            if (!entry.isIntersecting || seen.has(entry.target.id)) return;
+            seen.add(entry.target.id);
+            reachGoal(sectionGoals.get(entry.target.id));
             observer.unobserve(entry.target);
         });
-    }, {
-        threshold: 0.35
-    });
+    }, { threshold: 0.28 });
 
-    scrollGoals.forEach((goalName, sectionId) => {
+    sectionGoals.forEach((goal, sectionId) => {
         const section = document.getElementById(sectionId);
-        if (section) {
-            observer.observe(section);
-        }
+        if (section) observer.observe(section);
     });
+}
+
+function reachGoal(goalName, params = {}) {
+    if (!goalName || typeof window.ym !== "function") return;
+    window.ym(109675049, "reachGoal", goalName, params);
 }
