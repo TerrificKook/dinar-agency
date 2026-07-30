@@ -6,3 +6,7 @@ For the About section portrait, upload your file to:
 
 The site is configured to use this file in the About section.
 If the file is missing, it falls back to `images/dinar-photo.png`.
+
+The social preview image for the main site and Laboratory is:
+
+- `images/og-dinar-agency.png`

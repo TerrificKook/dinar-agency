@@ -61,12 +61,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function renderStats() {
     if (selectors.catalogCount) {
-      selectors.catalogCount.textContent = String(catalogItems.length);
+      selectors.catalogCount.textContent = catalogItems.length ? String(catalogItems.length) : "—";
     }
 
     if (selectors.pdfCount) {
       const available = pdfs.filter((item) => item.href).length;
-      selectors.pdfCount.textContent = String(available);
+      selectors.pdfCount.textContent = available ? String(available) : "—";
     }
   }
 
@@ -128,12 +128,25 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
 
     if (selectors.emptyState) {
-      selectors.emptyState.hidden = items.length > 0;
+      const hasActiveSearch = Boolean(normalize(state.search)) || state.filter !== "Все";
+
+      if (!catalogItems.length) {
+        selectors.emptyState.textContent = "Раздел наполняется.";
+        selectors.emptyState.hidden = false;
+      } else {
+        selectors.emptyState.textContent = "По этому запросу ничего не нашлось. Попробуйте другое слово или сбросьте фильтр.";
+        selectors.emptyState.hidden = items.length > 0 || !hasActiveSearch;
+      }
     }
   }
 
   function renderPdfs() {
     if (!selectors.pdfGrid) return;
+
+    if (!pdfs.length) {
+      selectors.pdfGrid.innerHTML = '<p class="empty-state">Раздел наполняется.</p>';
+      return;
+    }
 
     selectors.pdfGrid.innerHTML = pdfs
       .map((item) => {
@@ -185,23 +198,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (openButton) {
-          openCard(Number(openButton.dataset.open));
+          openCard(Number(openButton.dataset.open), openButton);
           reachGoal("fishki_prompt_open");
         }
       });
     }
   }
 
-  function openCard(index) {
+  function openCard(index, trigger) {
     const item = catalogItems[index];
     if (!item || !selectors.modal) return;
 
     state.activeCard = item;
+    state.modalTrigger = trigger || null;
     selectors.modalCategory.textContent = item.category;
     selectors.modalTitle.textContent = item.title;
     selectors.modalDescription.textContent = item.description;
     selectors.modalText.textContent = item.text;
     selectors.modal.classList.add("is-open");
+    selectors.modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
     selectors.modalClose?.focus();
   }
@@ -210,8 +225,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!selectors.modal) return;
 
     selectors.modal.classList.remove("is-open");
+    selectors.modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
     state.activeCard = null;
+    state.modalTrigger?.focus();
+    state.modalTrigger = null;
   }
 
   function bindModalEvents() {
@@ -321,7 +339,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function initReveal() {
     const items = document.querySelectorAll(".reveal");
-    if (!items.length || !("IntersectionObserver" in window)) {
+    const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (!items.length || reduceMotion || !("IntersectionObserver" in window)) {
       items.forEach((item) => item.classList.add("is-visible"));
       return;
     }
