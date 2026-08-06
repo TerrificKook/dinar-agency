@@ -378,8 +378,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function reachGoal(goalName, params = {}) {
-    if (!goalName || typeof window.ym !== "function") return;
+    if (!goalName) return;
 
-    window.ym(109675049, "reachGoal", goalName, params);
+    if (typeof window.ym === "function") {
+      window.ym(109675049, "reachGoal", goalName, params);
+    }
+
+    if (typeof window.gtag === "function") {
+      window.gtag("event", goalName, params);
+    }
   }
 });
