@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dinar.agency - сайты и системы для сложных B2B-заявок</title>
-    <meta name="description" content="Сайты, умные брифы и Telegram-инструменты для производственных и сервисных B2B-компаний. Помогаю собирать полные заявки, не терять файлы и быстрее отвечать клиентам.">
+    <title>Сайты и поисковый запуск для малого B2B - Dinar.agency</title>
+    <meta name="description" content="Создание и обновление сайтов для небольших производственных и сервисных B2B-компаний: структура по спросу, аналитика, базовое SEO и подготовка к рекламе.">
     <meta name="author" content="Динар Динмухаметов">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="1zvMu9Dh_mMrUZKB-9PRjw9QlIbMhBmWwOvt3iG-pfA">
     <link rel="canonical" href="https://dinar.agency/">
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
 
-    <meta property="og:title" content="Dinar.agency - сайты и системы для сложных B2B-заявок">
-    <meta property="og:description" content="Сайты, умные брифы и Telegram-инструменты для производственных и сервисных B2B-компаний.">
+    <meta property="og:title" content="Сайты и поисковый запуск для малого B2B - Dinar.agency">
+    <meta property="og:description" content="Создаю и обновляю сайты для небольших производственных и сервисных B2B-компаний. Готовлю структуру, аналитику и поисковую основу.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dinar.agency/">
     <meta property="og:image" content="https://dinar.agency/images/og-dinar-agency.png">
@@ -22,8 +22,8 @@
     <meta property="og:site_name" content="Dinar.agency">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Dinar.agency - сайты и системы для сложных B2B-заявок">
-    <meta name="twitter:description" content="Сложный запрос - в понятный заказ. Сайты и рабочие системы для B2B-компаний.">
+    <meta name="twitter:title" content="Сайты и поисковый запуск для малого B2B - Dinar.agency">
+    <meta name="twitter:description" content="Сайты, аналитика и поисковая основа для небольших производственных и сервисных B2B-компаний.">
     <meta name="twitter:image" content="https://dinar.agency/images/og-dinar-agency.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,20 +61,20 @@
                 "@id": "https://dinar.agency/#service",
                 "name": "Dinar.agency",
                 "url": "https://dinar.agency/",
-                "description": "Сайты, умные брифы и Telegram-инструменты для производственных и сервисных B2B-компаний.",
-                "areaServed": {
-                    "@type": "Country",
-                    "name": "Россия"
+                "description": "Создание и обновление сайтов, аналитика и поисковая подготовка для небольших производственных и сервисных B2B-компаний.",
+                "areaServed": {"@type": "Country", "name": "Россия"},
+                "founder": {"@id": "https://dinar.agency/#person"},
+                "serviceType": ["Разбор сайта и план", "Сайт-старт", "Сайт и поисковая основа"],
+                "hasOfferCatalog": {
+                    "@type": "OfferCatalog",
+                    "name": "Услуги Dinar.agency",
+                    "itemListElement": [
+                        {"@type": "Offer", "price": "14900", "priceCurrency": "RUB", "itemOffered": {"@type": "Service", "name": "Разбор сайта и план"}},
+                        {"@type": "Offer", "price": "29900", "priceCurrency": "RUB", "itemOffered": {"@type": "Service", "name": "Сайт-старт"}},
+                        {"@type": "Offer", "price": "59900", "priceCurrency": "RUB", "itemOffered": {"@type": "Service", "name": "Сайт и поисковая основа"}}
+                    ]
                 },
-                "founder": {
-                    "@id": "https://dinar.agency/#person"
-                },
-                "serviceType": [
-                    "Сайты для сложных B2B-заявок",
-                    "Умные брифы",
-                    "Telegram-инструменты для обработки запросов"
-                ],
-                "priceRange": "от 14 900 ₽",
+                "priceRange": "14 900-59 900 ₽",
                 "inLanguage": "ru"
             },
             {
@@ -83,16 +83,9 @@
                 "name": "Динар Динмухаметов",
                 "url": "https://dinar.agency/",
                 "image": "https://dinar.agency/images/dinar-about-photo.jpeg",
-                "jobTitle": "Операционный практик и основатель Dinar.agency",
-                "sameAs": [
-                    "https://t.me/mrdinar"
-                ],
-                "knowsAbout": [
-                    "Управление производственными проектами",
-                    "Обработка B2B-запросов",
-                    "Рекламное производство",
-                    "Автоматизация рабочих процессов"
-                ]
+                "jobTitle": "Основатель Dinar.agency",
+                "sameAs": ["https://t.me/mrdinar"],
+                "knowsAbout": ["Создание сайтов", "Поисковая подготовка сайтов", "Веб-аналитика", "Производственные B2B-проекты"]
             }
         ]
     }
@@ -107,21 +100,19 @@
 
     <header class="site-header" id="top">
         <div class="nav-shell">
-            <a class="brand" href="#top" aria-label="Dinar.agency — на главную">
+            <a class="brand" href="#top" aria-label="Dinar.agency - на главную">
                 <span class="brand-mark" aria-hidden="true">D</span>
                 <span>Dinar.agency</span>
             </a>
-
             <nav class="nav-menu" id="navMenu" aria-label="Основная навигация">
-                <a href="#solutions">Решения</a>
-                <a href="#demonstration">Демонстрация</a>
+                <a href="#services">Услуги</a>
+                <a href="#work">Примеры</a>
                 <a href="#process">Как работаем</a>
+                <a href="#ownership">Что остаётся</a>
                 <a href="#about">Обо мне</a>
-                <a href="fishki-biznesa/" data-analytics-goal="laboratory_nav">Лаборатория</a>
                 <a href="#faq">FAQ</a>
                 <a href="#contact">Контакты</a>
             </nav>
-
             <button class="nav-toggle" id="navToggle" type="button" aria-label="Открыть меню" aria-controls="navMenu" aria-expanded="false">
                 <span></span>
                 <span></span>
@@ -134,205 +125,97 @@
             <div class="container hero-grid">
                 <div class="hero-copy">
                     <p class="eyebrow">Для небольших производственных и сервисных B2B-компаний</p>
-                    <h1 id="hero-title">Сложный запрос - <span>в понятный заказ</span></h1>
-                    <p class="hero-lead">Собираю сайты и простые рабочие системы для компаний, где заказ начинается с фото, размеров, файлов и уточнений. Клиент сразу передаёт нужные данные, а менеджер получает структурированную заявку и быстрее отвечает.</p>
+                    <h1 id="hero-title">Сайты и <span>поисковый запуск</span> для малого B2B</h1>
+                    <p class="hero-lead">Создаю новые сайты и привожу в порядок существующие. Продумываю структуру по реальному спросу, подключаю аналитику, готовлю сайт к поиску и первому рекламному тесту.</p>
                     <div class="button-row">
-                        <a class="button button-primary" href="#contact" data-analytics-goal="typical_request_hero">Разобрать типовой запрос</a>
-                        <a class="button button-secondary" href="#demonstration" data-analytics-goal="demonstration_hero">Посмотреть демонстрацию</a>
+                        <a class="button button-primary" href="#contact" data-contact-interest="Нужен новый сайт" data-analytics-goal="hero_new_site_cta">Обсудить новый сайт</a>
+                        <a class="button button-secondary" href="#contact" data-contact-interest="Нужно обновить существующий сайт" data-analytics-goal="hero_existing_site_cta">Показать существующий сайт</a>
                     </div>
-                    <p class="hero-note">Пришлите обезличенный пример запроса. В течение 1 рабочего дня покажу, что можно упростить и какой формат подойдёт.</p>
+                    <p class="hero-note">Работаю лично. Домен и хостинг оформляются на клиента, исходники сайта передаю после запуска.</p>
                 </div>
-
-                <div class="request-preview" aria-label="Демонстрационный пример структурирования заявки">
-                    <div class="preview-topline">
-                        <span class="status-dot" aria-hidden="true"></span>
-                        <span>Демонстрационный пример</span>
-                        <span class="preview-step">01 / 04</span>
-                    </div>
-                    <div class="incoming-message">
-                        <span class="message-label">Входящий запрос</span>
-                        <p>«Нужно изготовить навигацию в офис. Есть план и несколько фото. Сколько будет стоить?»</p>
-                    </div>
-                    <div class="preview-result">
-                        <p class="preview-caption">Система уже выделила</p>
-                        <dl>
-                            <div><dt>Задача</dt><dd>Офисная навигация</dd></div>
-                            <div><dt>Вложения</dt><dd>План + фото</dd></div>
-                            <div class="needs-data"><dt>Нужно уточнить</dt><dd>Тираж, материалы, сроки</dd></div>
-                        </dl>
-                    </div>
-                    <div class="preview-footer">
-                        <span>Карточка запроса готовится</span>
-                        <span aria-hidden="true">→</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section problems" aria-labelledby="problems-title">
-            <div class="container">
-                <div class="section-heading section-heading-wide">
-                    <p class="section-kicker">До первого расчёта</p>
-                    <h2 id="problems-title">Узнаёте ситуацию?</h2>
-                    <p>Проблема обычно не в количестве обращений, а в том, сколько ручной работы начинается после первого сообщения.</p>
-                </div>
-                <ol class="problem-list">
-                    <li><span>01</span><p>Клиент пишет «сколько стоит?» без размеров, количества и срока.</p></li>
-                    <li><span>02</span><p>Фото, чертежи и уточнения лежат в разных чатах.</p></li>
-                    <li><span>03</span><p>Менеджер каждый раз задаёт одни и те же вопросы.</p></li>
-                    <li><span>04</span><p>Сайт работает как визитка, но не готовит заявку к расчёту.</p></li>
-                </ol>
-            </div>
-        </section>
-
-        <section class="section solutions" id="solutions" aria-labelledby="solutions-title">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="section-kicker">Два решения</p>
-                    <h2 id="solutions-title">Навести порядок на входе</h2>
-                    <p>Начинаем с одного типа запроса и собираем ровно тот рабочий контур, который нужен для первого содержательного ответа.</p>
-                </div>
-
-                <div class="solution-grid">
-                    <article class="solution-card">
-                        <div class="solution-card-head">
-                            <p class="solution-number">Решение 01</p>
-                            <h3>Сайт, который собирает ТЗ</h3>
-                            <p>Сайт объясняет сложную услугу и собирает данные, которых достаточно для первого расчёта или содержательного ответа.</p>
-                        </div>
-                        <div class="solution-meta">
-                            <div><span>Пилотная цена</span><strong>от 59 000 ₽</strong></div>
-                            <div><span>Срок</span><strong>10–12 рабочих дней</strong></div>
-                        </div>
-                        <div class="solution-details">
-                            <h4>Что входит</h4>
-                            <ul class="check-list">
-                                <li>структура и тексты;</li>
-                                <li>лендинг или мини-сайт до 3 страниц;</li>
-                                <li>один умный бриф под основной тип заказа;</li>
-                                <li>загрузка фото, файлов и чертежей;</li>
-                                <li>уведомление в Telegram или на почту;</li>
-                                <li>простой реестр обращений;</li>
-                                <li>7–10 шаблонов ответов;</li>
-                                <li>Яндекс Метрика и базовая SEO-настройка;</li>
-                                <li>инструкция и 7 дней поддержки.</li>
-                            </ul>
-                        </div>
-                        <p class="boundary"><strong>Отдельно:</strong> реклама, фирменный стиль, интернет-магазин, сложные калькуляторы, миграция CRM и интеграция с 1С.</p>
-                        <a class="text-link" href="#contact" data-analytics-goal="solution_site_cta">Показать мой типовой запрос <span aria-hidden="true">→</span></a>
-                    </article>
-
-                    <article class="solution-card solution-card-accent">
-                        <div class="solution-card-head">
-                            <p class="solution-number">Решение 02</p>
-                            <h3>Заявки без хаоса</h3>
-                            <p>Внутренний Telegram-помощник превращает письмо или сообщение клиента в карточку проекта, показывает недостающие данные и готовит черновик ответа.</p>
-                        </div>
-                        <div class="solution-meta">
-                            <div><span>Пилотная цена</span><strong>от 89 000 ₽</strong></div>
-                            <div><span>Срок</span><strong>10–15 рабочих дней</strong></div>
-                        </div>
-                        <div class="solution-details">
-                            <h4>Что входит</h4>
-                            <ul class="check-list">
-                                <li>один входной канал и один тип процесса;</li>
-                                <li>извлечение клиента, объекта, количества, размеров, материалов, города, срока и вложений;</li>
-                                <li>карточка запроса, статус и ответственный;</li>
-                                <li>ссылки на вложения;</li>
-                                <li>список недостающих данных;</li>
-                                <li>черновик ответа;</li>
-                                <li>напоминания и сводка;</li>
-                                <li>инструкция и 14 дней поддержки.</li>
-                            </ul>
-                        </div>
-                        <p class="boundary"><strong>Границы:</strong> это не новая универсальная CRM. В базовую стоимость не входят 1С, телефония, сложная ролевая модель и автоматическая отправка сообщений без подтверждения человека.</p>
-                        <a class="text-link" href="#demonstration" data-analytics-goal="solution_telegram_demo">Посмотреть схему работы <span aria-hidden="true">→</span></a>
-                    </article>
-                </div>
-
-                <aside class="entry-product" aria-labelledby="entry-product-title">
-                    <div>
-                        <p class="section-kicker">Входной продукт</p>
-                        <h3 id="entry-product-title">Разбор процесса + прототип</h3>
-                    </div>
-                    <div class="entry-product-copy">
-                        <p>Вы показываете один типовой запрос и текущий путь заявки. Я фиксирую узкие места, собираю один рабочий прототип формы, карточки или сценария и даю точную оценку полноценного внедрения.</p>
-                        <p class="entry-credit">При заказе основного решения в течение 14 дней стоимость разбора засчитывается в проект.</p>
-                    </div>
-                    <div class="entry-product-meta">
-                        <p><span>Цена</span><strong>14 900 ₽</strong></p>
-                        <p><span>Срок</span><strong>3 рабочих дня</strong></p>
-                        <a class="button button-primary" href="#contact" data-analytics-goal="process_review_cta">Заказать разбор</a>
-                    </div>
+                <aside class="hero-plan" aria-label="Основа поискового запуска">
+                    <p class="hero-plan-label">Основа запуска</p>
+                    <ol>
+                        <li><span>01</span><strong>Понятное предложение</strong><small>Кому и с какой задачей помогает сайт</small></li>
+                        <li><span>02</span><strong>Структура по спросу</strong><small>Без лишних страниц и пересечения тем</small></li>
+                        <li><span>03</span><strong>Техническая готовность</strong><small>Адаптивность, аналитика и базовое SEO</small></li>
+                        <li><span>04</span><strong>Первый тест</strong><small>Поиск или реклама только после подготовки сайта</small></li>
+                    </ol>
                 </aside>
             </div>
         </section>
 
-        <section class="section demonstration" id="demonstration" aria-labelledby="demonstration-title">
+        <section class="section problems" id="audience" aria-labelledby="audience-title">
+            <div class="container">
+                <div class="section-heading section-heading-wide">
+                    <p class="section-kicker">Кому подходит</p>
+                    <h2 id="audience-title">Когда сайт должен помогать выбрать и обратиться</h2>
+                    <p>Подхожу к сайту как к рабочему инструменту: сначала предложение и путь клиента, затем страницы, дизайн, аналитика и поисковая подготовка.</p>
+                </div>
+                <ul class="problem-list audience-list">
+                    <li><span>01</span><p>Первого сайта ещё нет, а клиенты уже ищут компанию и услуги в интернете.</p></li>
+                    <li><span>02</span><p>Существующий сайт устарел, непонятно объясняет предложение или неудобен на телефоне.</p></li>
+                    <li><span>03</span><p>Направлений несколько, но нет ясной структуры страниц и приоритетов для поиска.</p></li>
+                    <li><span>04</span><p>Аналитика не подключена или не показывает обращения с ключевых кнопок и форм.</p></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section solutions" id="services" aria-labelledby="services-title">
             <div class="container">
                 <div class="section-heading">
-                    <p class="section-kicker">Демонстрация «до / после»</p>
-                    <h2 id="demonstration-title">Как сообщение превращается в рабочую задачу</h2>
-                    <p>Нейтральный вымышленный сценарий показывает принцип работы. Это не клиентский кейс и не обещание результата.</p>
+                    <p class="section-kicker">Три услуги</p>
+                    <h2 id="services-title">От ясного плана до поисковой основы</h2>
+                    <p>Цены тестовые для первых трёх внешних клиентов. До старта фиксируем состав работ, исходные материалы и границы проекта.</p>
                 </div>
-
-                <div class="demo-disclaimer">Демонстрационный пример · все названия и данные вымышлены</div>
-
-                <div class="demo-flow">
-                    <article class="demo-card demo-card-message">
-                        <span class="demo-index">01</span>
-                        <div>
-                            <p class="demo-label">Исходное сообщение клиента</p>
-                            <blockquote>«Добрый день! Нужна навигация для нового офиса в Твери. Есть план помещения и фото стен. Подскажите стоимость и срок?»</blockquote>
-                            <div class="attachment-row"><span>plan-office.pdf</span><span>photos.zip</span></div>
-                        </div>
+                <div class="service-grid">
+                    <article class="solution-card service-card">
+                        <div class="solution-card-head"><p class="solution-number">Услуга 01</p><h3>Разбор сайта и план</h3><p>Для существующего сайта, когда сначала нужно понять проблемы и порядок действий.</p></div>
+                        <div class="solution-meta service-price"><div><span>Тестовая цена</span><strong>14 900 ₽</strong></div></div>
+                        <div class="solution-details"><h4>Что входит</h4><ul class="check-list">
+                            <li>аудит до 10 страниц;</li><li>проверка структуры, текстов, UX, аналитики и SEO;</li><li>список проблем по приоритету;</li><li>пример переработанного первого экрана;</li><li>план следующих действий.</li>
+                        </ul></div>
+                        <p class="boundary">Стоимость засчитывается в проект при заказе в течение 14 дней.</p>
+                        <a class="text-link" href="#contact" data-contact-interest="Разбор сайта и план" data-analytics-goal="service_audit_cta">Обсудить разбор <span aria-hidden="true">→</span></a>
                     </article>
-
-                    <article class="demo-card">
-                        <span class="demo-index">02</span>
-                        <div>
-                            <p class="demo-label">Выделенные данные</p>
-                            <div class="data-chips">
-                                <span>Навигация</span>
-                                <span>Тверь</span>
-                                <span>План помещения</span>
-                                <span>Фото стен</span>
-                            </div>
-                        </div>
+                    <article class="solution-card service-card">
+                        <div class="solution-card-head"><p class="solution-number">Услуга 02</p><h3>Сайт-старт</h3><p>Компактный одностраничный сайт, который ясно показывает предложение и ведёт к первому контакту.</p></div>
+                        <div class="solution-meta service-price"><div><span>Тестовая цена</span><strong>29 900 ₽</strong></div></div>
+                        <div class="solution-details"><h4>Что входит</h4><ul class="check-list">
+                            <li>одна страница, до 7 смысловых блоков;</li><li>структура и редактирование текстов по материалам клиента;</li><li>адаптивная версия и кнопки связи или простая форма;</li><li>публикация, подключение домена и HTTPS;</li><li>Яндекс Метрика и Google Analytics;</li><li>базовые title, description и schema.org;</li><li>исходники, две серии правок и 14 дней технической поддержки.</li>
+                        </ul></div>
+                        <a class="text-link" href="#contact" data-contact-interest="Сайт-старт" data-analytics-goal="service_start_cta">Обсудить сайт-старт <span aria-hidden="true">→</span></a>
                     </article>
-
-                    <article class="demo-card demo-card-warning">
-                        <span class="demo-index">03</span>
-                        <div>
-                            <p class="demo-label">Чего не хватает</p>
-                            <ul>
-                                <li>Количество точек и табличек</li>
-                                <li>Материалы и требования к креплению</li>
-                                <li>Желаемая дата монтажа</li>
-                            </ul>
-                        </div>
+                    <article class="solution-card service-card solution-card-accent">
+                        <div class="solution-card-head"><p class="solution-number">Услуга 03</p><h3>Сайт + поисковая основа</h3><p>Многостраничный сайт для нескольких подтверждённых направлений спроса.</p></div>
+                        <div class="solution-meta service-price"><div><span>Тестовая цена</span><strong>59 900 ₽</strong></div></div>
+                        <div class="solution-details"><h4>Что входит</h4><ul class="check-list">
+                            <li>до 5 коммерческих страниц;</li><li>анализ направлений спроса и базовая семантическая карта;</li><li>логичная структура страниц;</li><li>техническая SEO-подготовка;</li><li>sitemap, robots, canonical и schema.org;</li><li>аналитика и цели;</li><li>подготовка к последующему тесту Яндекс Директа;</li><li>передача исходников.</li>
+                        </ul></div>
+                        <a class="text-link" href="#contact" data-contact-interest="Сайт и поисковая основа" data-analytics-goal="service_search_cta">Обсудить поисковую основу <span aria-hidden="true">→</span></a>
                     </article>
+                </div>
+            </div>
+        </section>
 
-                    <article class="demo-card">
-                        <span class="demo-index">04</span>
-                        <div>
-                            <p class="demo-label">Карточка запроса</p>
-                            <dl class="request-card">
-                                <div><dt>Проект</dt><dd>Офисная навигация</dd></div>
-                                <div><dt>Город</dt><dd>Тверь</dd></div>
-                                <div><dt>Статус</dt><dd><span class="tag-waiting">Нужно уточнение</span></dd></div>
-                                <div><dt>Вложения</dt><dd>2 ссылки</dd></div>
-                            </dl>
-                        </div>
+        <section class="section work" id="work" aria-labelledby="work-title">
+            <div class="container">
+                <div class="section-heading"><p class="section-kicker">Примеры работ</p><h2 id="work-title">Без вымышленных показателей</h2><p>Показываю выполненные задачи и устройство проектов. Не приписываю сайтам неподтверждённый рост позиций, трафика, обращений или продаж.</p></div>
+                <div class="case-grid">
+                    <article class="case-card case-card-featured">
+                        <div class="case-card-top"><p class="case-label">Рабочий проект</p><span>dinarcraft.ru</span></div><h3>Dinarcraft.ru</h3><p>Сайт российского B2B-производителя изделий из кожи и стропы.</p>
+                        <ul class="check-list"><li>структура B2B-каталога и коммерческих страниц;</li><li>страницы товаров и полезные материалы;</li><li>семантическая карта и распределение тем по страницам;</li><li>canonical, sitemap, robots и schema.org;</li><li>аналитика и цели для контактных действий.</li></ul>
+                        <a class="text-link" href="https://dinarcraft.ru/" target="_blank" rel="noopener" data-analytics-goal="case_dinarcraft_open">Открыть сайт <span aria-hidden="true">↗</span></a>
                     </article>
-
-                    <article class="demo-card demo-card-answer">
-                        <span class="demo-index">05</span>
-                        <div>
-                            <p class="demo-label">Черновик ответа менеджера</p>
-                            <p>Здравствуйте! План и фото получил. Чтобы подготовить первый расчёт, уточните, пожалуйста, количество табличек, предпочтительные материалы и желаемую дату монтажа. После этого вернусь с вариантами и сроком.</p>
-                            <span class="human-check">Отправка — только после проверки человеком</span>
-                        </div>
+                    <article class="case-card">
+                        <div class="case-card-top"><p class="case-label">Собственный проект</p><span>dinar.agency</span></div><h3>Dinar.agency</h3><p>Статический сайт агентства и отдельная публичная Лаборатория.</p>
+                        <ul class="check-list"><li>дизайн и адаптивная HTML/CSS-реализация;</li><li>структура услуг и форма первого контакта без сервера;</li><li>защита публичного email и базовый антиспам;</li><li>Яндекс Метрика, Google Analytics и события;</li><li>canonical, sitemap, robots и schema.org.</li></ul>
+                        <a class="text-link" href="#top" data-analytics-goal="case_agency_top">Посмотреть с начала <span aria-hidden="true">↑</span></a>
+                    </article>
+                    <article class="case-card case-card-internal">
+                        <div class="case-card-top"><p class="case-label">Внутренняя демонстрация</p><span>не клиентский кейс</span></div><h3>Сайт производственной компании</h3><p>Внутренний сценарий для проверки структуры сайта со сложным B2B-запросом.</p>
+                        <ul class="check-list"><li>первый экран с конкретным предложением;</li><li>разделение услуг по задачам клиента;</li><li>сбор исходных данных для расчёта;</li><li>понятный путь от страницы к обращению.</li></ul>
+                        <p class="case-note">Карточка показывает подход к проектированию. Результаты клиента не заявляются.</p>
                     </article>
                 </div>
             </div>
@@ -340,164 +223,85 @@
 
         <section class="section process" id="process" aria-labelledby="process-title">
             <div class="container">
-                <div class="section-heading">
-                    <p class="section-kicker">Как работаем</p>
-                    <h2 id="process-title">Один процесс — пять понятных шагов</h2>
-                </div>
-                <ol class="process-list">
-                    <li><span>01</span><p>Показываете типовой запрос.</p></li>
-                    <li><span>02</span><p>Фиксируем обязательные данные и правила.</p></li>
-                    <li><span>03</span><p>Собираю прототип.</p></li>
-                    <li><span>04</span><p>Проверяем на реальном сценарии.</p></li>
-                    <li><span>05</span><p>Запускаю и передаю инструкцию.</p></li>
+                <div class="section-heading"><p class="section-kicker">Подробный процесс</p><h2 id="process-title">Сначала задача и спрос, затем страницы</h2><p>Каждый этап заканчивается понятным промежуточным результатом. Ненужные страницы и функции не добавляются «на будущее».</p></div>
+                <ol class="process-list process-list-six">
+                    <li><span>01</span><p><strong>Вводные.</strong> Разбираем предложение, клиентов, материалы и цель сайта.</p></li>
+                    <li><span>02</span><p><strong>Текущий сайт.</strong> Проверяю страницы, тексты, аналитику и техническое состояние.</p></li>
+                    <li><span>03</span><p><strong>Спрос.</strong> Формирую предварительные направления и проверяю, какие страницы действительно нужны.</p></li>
+                    <li><span>04</span><p><strong>Прототип.</strong> Согласуем порядок блоков, смысл и действия посетителя.</p></li>
+                    <li><span>05</span><p><strong>Реализация.</strong> Собираю адаптивный сайт, подключаю аналитику и базовое SEO.</p></li>
+                    <li><span>06</span><p><strong>Передача.</strong> Проверяем запуск, фиксируем доступы и передаём исходники.</p></li>
                 </ol>
             </div>
         </section>
 
+        <section class="section ownership" id="ownership" aria-labelledby="ownership-title">
+            <div class="container ownership-grid">
+                <div class="section-heading"><p class="section-kicker">Результат и владение</p><h2 id="ownership-title">Сайт остаётся под контролем клиента</h2><p>Заранее разделяем мою работу, ваши аккаунты и расходы на сторонние услуги.</p></div>
+                <ul class="ownership-list">
+                    <li><strong>Домен и хостинг</strong><span>Оформляются на клиента. Я помогаю с подключением и HTTPS.</span></li><li><strong>Исходники сайта</strong><span>Передаются после запуска вместе с понятной структурой файлов.</span></li><li><strong>Аналитика</strong><span>Счётчики и кабинеты создаются или подключаются так, чтобы доступ оставался у клиента.</span></li><li><strong>Тексты и структура</strong><span>Согласованные материалы можно использовать и развивать дальше.</span></li><li><strong>Расходы отдельно</strong><span>Домен, хостинг и будущий рекламный бюджет не включаются в стоимость работ.</span></li>
+                </ul>
+            </div>
+            <div class="container specialization"><p class="section-kicker">Дополнительная специализация</p><div><h3>Сложные B2B-заявки</h3><p>Если расчёт зависит от размеров, количества, материалов, сроков, города, фото, файлов или чертежей, помогу выстроить на сайте понятный сбор исходных данных. Это дополнительный блок проекта, а не отдельное обещание автоматизации.</p></div></div>
+        </section>
+
         <section class="section about" id="about" aria-labelledby="about-title">
             <div class="container about-grid">
-                <div class="about-photo">
-                    <img src="images/dinar-about-photo.jpeg" alt="Динар Динмухаметов, основатель Dinar.agency" loading="lazy" width="1024" height="1536">
-                    <p>Динар Динмухаметов<br><span>Работаю лично, подрядчиков подключаю при необходимости</span></p>
-                </div>
-                <div class="about-copy">
-                    <p class="section-kicker">Почему Динар</p>
-                    <h2 id="about-title">Понимаю не только сайт, но и то, что происходит после заявки</h2>
-                    <p class="about-lead">24+ года управляю производственными и клиентскими проектами: от входящего запроса и расчёта до производства, монтажа, документов и сдачи. Поэтому начинаю не с выбора технологии, а с того, какая информация нужна людям, чтобы заказ действительно поехал.</p>
-                    <ul class="fact-list">
-                        <li><strong>24+ года</strong><span>в клиентских и производственных проектах</span></li>
-                        <li><strong>Полный цикл</strong><span>клиент — расчёт — производство — монтаж — сдача</span></li>
-                        <li><strong>Практика</strong><span>полиграфия, POSm, металл, пластик, вывески и навигация</span></li>
-                        <li><strong>Без перегруза</strong><span>современные инструменты внутри понятного рабочего процесса</span></li>
-                    </ul>
-                    <blockquote class="about-quote">Я не продаю код и дизайн по отдельности. Я разбираюсь в процессе, собираю рабочее решение и отвечаю за запуск.</blockquote>
+                <div class="about-photo"><img src="images/dinar-about-photo.jpeg" alt="Динар Динмухаметов, основатель Dinar.agency" loading="lazy" width="1024" height="1536"><p>Динар Динмухаметов<br><span>Работаю лично, подрядчиков подключаю при необходимости</span></p></div>
+                <div class="about-copy"><p class="section-kicker">Опыт Динара</p><h2 id="about-title">Понимаю сайт в контексте реальной B2B-работы</h2><p class="about-lead">Более 24 лет управляю клиентскими и производственными проектами: от входящего запроса и расчёта до производства, монтажа, документов и сдачи. Поэтому на сайте важны не только внешний вид, но и точность предложения, исходные данные и понятный следующий шаг.</p>
+                    <ul class="fact-list"><li><strong>24+ года</strong><span>в клиентских и производственных проектах</span></li><li><strong>Полный цикл</strong><span>запрос - расчёт - производство - монтаж - сдача</span></li><li><strong>B2B-практика</strong><span>полиграфия, POSm, металл, пластик, вывески и навигация</span></li><li><strong>Личная работа</strong><span>один ответственный за структуру, реализацию и запуск</span></li></ul>
+                    <blockquote class="about-quote">Моя задача - собрать понятный сайт, проверить его работу и передать клиенту управляемый результат.</blockquote>
                 </div>
             </div>
         </section>
 
+        <section class="section direct-pilot" id="direct" aria-labelledby="direct-title">
+            <div class="container direct-grid">
+                <div><p class="section-kicker">Дополнительный этап</p><h2 id="direct-title">Пилот Яндекс Директа - после подготовки сайта</h2></div>
+                <div class="direct-copy"><p>Рекламный тест имеет смысл, когда предложение, посадочная страница, аналитика и цели уже готовы. Кампания не входит автоматически в создание сайта и оценивается отдельно.</p><ul class="check-list"><li>проверяем коммерческие запросы и исключения;</li><li>выбираем одну готовую посадочную страницу;</li><li>фиксируем цели аналитики до запуска;</li><li>согласуем бюджет, регион и срок теста отдельно.</li></ul><p class="direct-note">Пилот проверяет гипотезу. Он не является обещанием количества обращений, продаж или позиций.</p></div>
+            </div>
+        </section>
+
         <section class="section terms" aria-labelledby="terms-title">
-            <div class="container">
-                <div class="section-heading">
-                    <p class="section-kicker">Условия и границы</p>
-                    <h2 id="terms-title">Что фиксируем до старта</h2>
-                </div>
-                <ul class="terms-list">
-                    <li><span>01</span><p>Результат и состав работ фиксируем до старта.</p></li>
-                    <li><span>02</span><p>50% предоплата, 50% после приёмки.</p></li>
-                    <li><span>03</span><p>Две итерации правок внутри согласованного объёма.</p></li>
-                    <li><span>04</span><p>Коммуникации в двух окнах рабочего дня.</p></li>
-                    <li><span>05</span><p>Срочный запуск возможен при наличии окна и стоит дороже.</p></li>
-                    <li><span>06</span><p>Сторонние сервисы, API и поддержка после включённого периода оплачиваются отдельно.</p></li>
-                </ul>
+            <div class="container"><div class="section-heading"><p class="section-kicker">Условия</p><h2 id="terms-title">Что фиксируем до старта</h2></div>
+                <ul class="terms-list"><li><span>01</span><p>Тестовые цены действуют для первых трёх внешних клиентов.</p></li><li><span>02</span><p>Состав работ, исходные материалы и результат фиксируем до старта.</p></li><li><span>03</span><p>50% предоплата, 50% после приёмки согласованного результата.</p></li><li><span>04</span><p>Для «Сайта-старта» включены две серии правок и 14 дней технической поддержки.</p></li><li><span>05</span><p>Новые страницы, функции и интеграции оцениваются отдельно до начала работ.</p></li><li><span>06</span><p>Платные сервисы, домен, хостинг и рекламный бюджет оплачиваются клиентом отдельно.</p></li></ul>
             </div>
         </section>
 
         <section class="section faq" id="faq" aria-labelledby="faq-title">
             <div class="container faq-grid">
-                <div class="section-heading">
-                    <p class="section-kicker">FAQ</p>
-                    <h2 id="faq-title">Коротко о частых вопросах</h2>
-                    <p>Если ситуация не укладывается в эти ответы, достаточно прислать один обезличенный пример запроса.</p>
-                </div>
+                <div class="section-heading"><p class="section-kicker">FAQ</p><h2 id="faq-title">Коротко о частых вопросах</h2><p>Если вашего вопроса нет в списке, покажите текущий сайт или кратко опишите новый проект.</p></div>
                 <div class="faq-list">
-                    <details>
-                        <summary>Подойдёт ли это моей компании?</summary>
-                        <p>Скорее да, если вы работаете с B2B-заказами и до расчёта нужно собрать размеры, количество, материалы, сроки, город, фото или файлы. Для простого товара с фиксированной ценой такое решение может быть избыточным.</p>
-                    </details>
-                    <details>
-                        <summary>Можно ли начать без CRM?</summary>
-                        <p>Да. Для пилота достаточно формы, таблицы или простой карточки запроса. CRM имеет смысл подключать позже, когда понятны поля, статусы и правила процесса.</p>
-                    </details>
-                    <details>
-                        <summary>Что нужно показать на старте?</summary>
-                        <p>Один типовой запрос, текущую переписку без персональных данных и путь заявки от первого сообщения до расчёта. Этого достаточно, чтобы увидеть повторяющиеся вопросы и узкие места.</p>
-                    </details>
-                    <details>
-                        <summary>Кто пишет тексты и формулирует вопросы формы?</summary>
-                        <p>Я собираю структуру, тексты и вопросы на основе ваших материалов и интервью. Вы проверяете профессиональные детали, термины и обязательные требования к заказу.</p>
-                    </details>
-                    <details>
-                        <summary>Будет ли система сама отвечать клиентам?</summary>
-                        <p>В пилотном решении система готовит черновик. Менеджер проверяет его и сам подтверждает отправку. Полная автоматическая отправка не входит в базовый состав.</p>
-                    </details>
-                    <details>
-                        <summary>Что останется у нас после запуска?</summary>
-                        <p>Рабочая версия сайта или инструмента, согласованные тексты и правила, доступы к созданным материалам, шаблоны ответов и инструкция для сотрудников.</p>
-                    </details>
-                    <details>
-                        <summary>Что считается отдельной доработкой?</summary>
-                        <p>Новый тип заявки, дополнительный канал, сложные расчёты, новая интеграция, изменение согласованной логики или значительное расширение страниц оцениваются отдельно до начала работ.</p>
-                    </details>
-                    <details>
-                        <summary>Можно ли подключить существующую CRM позже?</summary>
-                        <p>Да, если она позволяет принимать нужные данные. Сначала фиксируем поля и процесс, затем отдельно оцениваем способ передачи карточки и вложений в вашу систему.</p>
-                    </details>
+                    <details><summary>Как понять, какая из трёх услуг мне подходит?</summary><p>Если сайт уже есть, но непонятно, что менять, начните с разбора. Для первого компактного сайта подойдёт «Сайт-старт». Если у компании несколько подтверждённых направлений и нужны отдельные коммерческие страницы, рассматриваем «Сайт + поисковая основа».</p></details>
+                    <details><summary>Можно ли обновить существующий сайт, а не делать новый?</summary><p>Да. Сначала проверю текущую структуру, тексты, техническое состояние и аналитику. Подходящие страницы и адреса сохраняем, а изменения планируем точечно.</p></details>
+                    <details><summary>Что нужно предоставить на старте?</summary><p>Описание услуг, типичных клиентов, текущие материалы, контакты, примеры работ и доступ к существующему сайту, если он есть. Недостающие сведения отмечаем отдельно, ничего не выдумываем.</p></details>
+                    <details><summary>Кто готовит тексты?</summary><p>Я выстраиваю структуру и редактирую тексты по материалам клиента. Профессиональные факты, цены, условия и характеристики подтверждает клиент.</p></details>
+                    <details><summary>Что означает «поисковая основа»?</summary><p>Это предварительная карта спроса, логичная структура страниц, корректные метаданные, canonical, schema.org, sitemap, robots и аналитика. Это подготовка сайта, а не гарантия позиций или трафика.</p></details>
+                    <details><summary>Входит ли Яндекс Директ в стоимость сайта?</summary><p>Нет. Сайт только готовится к последующему рекламному тесту. Запросы, посадочная страница, бюджет, регион и условия пилота согласуются отдельным этапом.</p></details>
+                    <details><summary>Кому принадлежат домен, хостинг и исходники?</summary><p>Домен и хостинг оформляются на клиента. Исходники сайта передаются после запуска, а доступы к аналитике остаются под контролем клиента.</p></details>
+                    <details><summary>Что не входит в базовые услуги?</summary><p>Интернет-магазин, личный кабинет, сложные калькуляторы, CRM, 1С, постоянное ведение рекламы, платные сервисы и значительное расширение согласованной структуры оцениваются отдельно.</p></details>
                 </div>
             </div>
         </section>
 
         <section class="section contact" id="contact" aria-labelledby="contact-title">
             <div class="container contact-grid">
-                <div class="contact-copy">
-                    <p class="section-kicker">Следующий шаг</p>
-                    <h2 id="contact-title">Покажите один типовой запрос</h2>
-                    <p>Пришлите обезличенное письмо, сообщение или бриф. Я отвечу, где теряется время, какой минимальный прототип имеет смысл собрать и сколько будет стоить следующий шаг.</p>
-                    <div class="button-row">
-                        <a class="button button-light" href="https://t.me/mrdinar" target="_blank" rel="noopener" data-analytics-goal="telegram_final">Написать в Telegram</a>
-                        <button class="button button-outline-light" id="emailDraftButton" type="button" data-email-b64="ZGJAZGluYXJkYi5ydQ==" data-analytics-goal="email_final">Отправить по email</button>
-                    </div>
-                    <p class="contact-hint">Можно сначала заполнить форму: она соберёт текст, скопирует его и откроет выбранный канал. Файлы безопаснее приложить уже в Telegram или письме.</p>
+                <div class="contact-copy"><p class="section-kicker">Первый контакт</p><h2 id="contact-title">Коротко опишите задачу</h2><p>Можно обсудить новый сайт или показать адрес существующего. Я задам уточняющие вопросы и предложу подходящий следующий шаг без обязательства сразу заказывать большой проект.</p>
+                    <div class="button-row"><a class="button button-light" href="https://t.me/mrdinar" target="_blank" rel="noopener" data-analytics-goal="telegram_final">Написать в Telegram</a><button class="button button-outline-light" id="emailDraftButton" type="button" data-email-b64="ZGJAZGluYXJkYi5ydQ==" data-analytics-goal="email_final">Отправить по email</button></div>
+                    <p class="contact-hint">Форма ничего не отправляет на сервер. Она подготовит текст, скопирует его и откроет Telegram. Email хранится в кодированном виде и раскрывается только после действия.</p>
                 </div>
-
                 <form class="contact-form" id="contactForm">
-                    <div class="form-heading">
-                        <h3>Подготовить первое сообщение</h3>
-                        <span>Поля со звёздочкой обязательны</span>
-                    </div>
-
-                    <label>
-                        <span>Имя *</span>
-                        <input type="text" name="name" autocomplete="name" required>
-                    </label>
-
-                    <label>
-                        <span>Компания / чем занимаетесь *</span>
-                        <input type="text" name="company" autocomplete="organization" required>
-                    </label>
-
-                    <label>
-                        <span>Где сейчас приходят заявки? *</span>
-                        <input type="text" name="channels" placeholder="Например: почта и Telegram" required>
-                    </label>
-
-                    <label>
-                        <span>Что обычно присылает клиент? *</span>
-                        <textarea name="client_data" rows="3" placeholder="Фото, размеры, чертежи, свободное описание…" required></textarea>
-                    </label>
-
-                    <label>
-                        <span>Что чаще всего приходится уточнять? *</span>
-                        <textarea name="clarifications" rows="3" placeholder="Количество, материалы, сроки, адрес объекта…" required></textarea>
-                    </label>
-
-                    <label>
-                        <span>Ссылка на обезличенный пример</span>
-                        <input type="url" name="example_url" inputmode="url" placeholder="https://">
-                    </label>
-
-                    <label>
-                        <span>Контакт для ответа *</span>
-                        <input type="text" name="contact" autocomplete="email" placeholder="Email или @username" required>
-                    </label>
-
-                    <label class="honeypot" aria-hidden="true">
-                        <span>Не заполняйте это поле</span>
-                        <input type="text" name="company_website" tabindex="-1" autocomplete="off">
-                    </label>
+                    <div class="form-heading"><h3>Подготовить первое сообщение</h3><span>Поля со звёздочкой обязательны</span></div>
+                    <label><span>Имя *</span><input type="text" name="name" autocomplete="name" required></label>
+                    <label><span>Компания / чем занимаетесь *</span><input type="text" name="company" autocomplete="organization" required></label>
+                    <label><span>Что нужно обсудить? *</span><select name="interest" required><option value="">Выберите вариант</option><option>Нужен новый сайт</option><option>Нужно обновить существующий сайт</option><option>Разбор сайта и план</option><option>Сайт-старт</option><option>Сайт и поисковая основа</option></select></label>
+                    <label><span>Адрес существующего сайта</span><input type="url" name="site_url" inputmode="url" placeholder="https://"></label>
+                    <label><span>Коротко о задаче *</span><textarea name="message" rows="4" placeholder="Что компания предлагает и что нужно изменить или запустить" required></textarea></label>
+                    <label><span>Контакт для ответа *</span><input type="text" name="contact" autocomplete="email" placeholder="Email или @username" required></label>
+                    <label class="honeypot" aria-hidden="true"><span>Не заполняйте это поле</span><input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
                     <input type="hidden" name="form_started_at" value="">
-
-                    <button class="button button-primary form-submit" type="submit">Скопировать запрос и открыть Telegram</button>
-                    <p class="form-note">Форма ничего не отправляет на сервер. Перед открытием Telegram текст будет скопирован в буфер обмена.</p>
+                    <button class="button button-primary form-submit" type="submit">Скопировать сообщение и открыть Telegram</button>
+                    <p class="form-note">Перед открытием Telegram текст будет скопирован в буфер обмена. Файлы можно приложить уже в диалоге.</p>
                     <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
                 </form>
             </div>
@@ -506,32 +310,12 @@
 
     <footer class="site-footer">
         <div class="container footer-grid">
-            <div>
-                <a class="brand brand-footer" href="#top">
-                    <span class="brand-mark" aria-hidden="true">D</span>
-                    <span>Dinar.agency</span>
-                </a>
-                <p>Сайты и рабочие системы для сложных B2B-заявок.</p>
-            </div>
-            <nav aria-label="Навигация в подвале">
-                <a href="#solutions">Решения</a>
-                <a href="#demonstration">Демонстрация</a>
-                <a href="#process">Как работаем</a>
-                <a href="fishki-biznesa/" data-analytics-goal="laboratory_footer">Лаборатория</a>
-                <a href="#contact">Контакты</a>
-            </nav>
-            <div class="footer-contact" data-email-b64="ZGJAZGluYXJkYi5ydQ==">
-                <a href="https://t.me/mrdinar" target="_blank" rel="noopener" data-analytics-goal="telegram_footer">@mrdinar</a>
-                <button type="button" data-email-reveal>Показать email</button>
-                <a href="#" data-email-link hidden></a>
-            </div>
+            <div><a class="brand brand-footer" href="#top"><span class="brand-mark" aria-hidden="true">D</span><span>Dinar.agency</span></a><p>Сайты и поисковый запуск для небольших производственных и сервисных B2B-компаний.</p></div>
+            <nav aria-label="Навигация в подвале"><a href="#services">Услуги</a><a href="#work">Примеры</a><a href="#process">Как работаем</a><a href="fishki-biznesa/" data-analytics-goal="laboratory_footer">Лаборатория</a><a href="#contact">Контакты</a></nav>
+            <div class="footer-contact" data-email-b64="ZGJAZGluYXJkYi5ydQ=="><a href="https://t.me/mrdinar" target="_blank" rel="noopener" data-analytics-goal="telegram_footer">@mrdinar</a><button type="button" data-email-reveal>Показать email</button><a href="#" data-email-link hidden></a></div>
         </div>
-        <div class="container footer-bottom">
-            <span>© <span id="currentYear">2026</span> Dinar.agency</span>
-            <span>Работаю лично · онлайн по России</span>
-        </div>
+        <div class="container footer-bottom"><span>© <span id="currentYear">2026</span> Dinar.agency</span><span>Работаю лично · онлайн по России</span></div>
     </footer>
-
     <script src="js/main.js" defer></script>
 </body>
 </html>

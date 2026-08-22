@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initHeader();
     initMobileNavigation();
     initEmailReveal();
+    initContactIntents();
     initContactForm();
     initAnalytics();
 });
@@ -93,6 +94,23 @@ function initEmailReveal() {
     });
 }
 
+function initContactIntents() {
+    const interest = document.querySelector('#contactForm [name="interest"]');
+    if (!interest) return;
+
+    document.querySelectorAll("[data-contact-interest]").forEach((link) => {
+        link.addEventListener("click", () => {
+            const selectedInterest = link.getAttribute("data-contact-interest");
+            const optionExists = Array.from(interest.options)
+                .some((option) => option.value === selectedInterest);
+
+            if (optionExists) {
+                interest.value = selectedInterest;
+            }
+        });
+    });
+}
+
 function initContactForm() {
     const form = document.querySelector("#contactForm");
     const status = document.querySelector("#formStatus");
@@ -156,7 +174,7 @@ function initContactForm() {
         if (!email || !email.includes("@")) return;
 
         const message = buildContactMessage(form);
-        const subject = "Типовой B2B-запрос — Dinar.agency";
+        const subject = "Запрос по сайту - Dinar.agency";
         window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
         reachGoal("contact_email_draft");
     });
@@ -169,13 +187,12 @@ function buildContactMessage(form) {
     return [
         "Здравствуйте, Динар!",
         "",
-        "Хочу разобрать типовой входящий запрос.",
+        "Хочу обсудить сайт.",
         `Имя: ${value("name")}`,
         `Компания / деятельность: ${value("company")}`,
-        `Где приходят заявки: ${value("channels")}`,
-        `Что обычно присылает клиент: ${value("client_data")}`,
-        `Что приходится уточнять: ${value("clarifications")}`,
-        `Обезличенный пример: ${value("example_url")}`,
+        `Интерес: ${value("interest")}`,
+        `Существующий сайт: ${value("site_url")}`,
+        `Задача: ${value("message")}`,
         `Контакт для ответа: ${value("contact")}`
     ].join("\n");
 }
@@ -265,10 +282,13 @@ function initAnalytics() {
     });
 
     const sectionGoals = new Map([
-        ["solutions", "scroll_solutions"],
-        ["demonstration", "scroll_demonstration"],
+        ["audience", "scroll_audience"],
+        ["services", "scroll_services"],
+        ["work", "scroll_work"],
         ["process", "scroll_process"],
+        ["ownership", "scroll_ownership"],
         ["about", "scroll_about"],
+        ["direct", "scroll_direct"],
         ["faq", "scroll_faq"],
         ["contact", "scroll_contact"]
     ]);
