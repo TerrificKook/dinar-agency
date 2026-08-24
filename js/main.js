@@ -117,6 +117,10 @@ function initContactForm() {
     const emailButton = document.querySelector("#emailDraftButton");
     if (!form) return;
 
+    const contactUrls = {
+        telegram: "https://t.me/mrdinar",
+        max: "https://max.ru/u/f9LHodD0cOKdKxpZWRTf6opqWFE4_FBbFln83YGEvx6yfmukrq7u5bdn0Wg"
+    };
     const formStartGoal = form.getAttribute("data-analytics-start-goal") || "contact_form_start";
     const formSubmitGoal = form.getAttribute("data-analytics-submit-goal") || "contact_form_telegram";
 
@@ -152,24 +156,48 @@ function initContactForm() {
         }
 
         if (!canSubmitContactForm()) {
-            setFormStatus(status, "Лимит подготовленных сообщений достигнут. Напишите напрямую в Telegram.", true);
+            setFormStatus(status, "Лимит подготовленных сообщений достигнут. Напишите напрямую через удобный способ связи.", true);
             return;
         }
 
+        const channel = event.submitter?.getAttribute("data-contact-channel") || "telegram";
+        const channelGoal = formSubmitGoal.replace(/telegram$/, channel);
         const message = buildContactMessage(form);
-        const telegramWindow = window.open("https://t.me/mrdinar", "_blank", "noopener");
+        const channelName = channel === "max" ? "MAX" : "Telegram";
+        const contactWindow = contactUrls[channel]
+            ? window.open(contactUrls[channel], "_blank", "noopener")
+            : null;
         const copied = await copyText(message);
+
+        if (channel === "email") {
+            const email = decodeContact(emailButton?.getAttribute("data-email-b64") || "");
+            if (!email || !email.includes("@")) {
+                setFormStatus(status, "Не удалось открыть почту. Выберите другой способ связи.", true);
+                return;
+            }
+
+            const subject = "Запрос по сайту - Dinar.agency";
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+
+            if (copied) {
+                rememberContactSubmit();
+                setFormStatus(status, "Текст скопирован и добавлен в письмо. Осталось отправить его.");
+            } else {
+                setFormStatus(status, "Письмо подготовлено, но браузер не разрешил скопировать текст в буфер обмена.", true);
+            }
+            reachGoal(channelGoal, { channel, copied });
+            return;
+        }
 
         if (copied) {
             rememberContactSubmit();
-            setFormStatus(status, telegramWindow
-                ? "Текст скопирован. Вставьте его в открывшийся диалог Telegram."
-                : "Текст скопирован. Откройте Telegram и отправьте его пользователю @mrdinar.");
-            reachGoal(formSubmitGoal, { copied: true });
+            setFormStatus(status, contactWindow
+                ? `Текст скопирован. Вставьте его в открывшийся диалог ${channelName}.`
+                : `Текст скопирован. Откройте ${channelName} и вставьте его в сообщение.`);
         } else {
-            setFormStatus(status, "Telegram открыт, но браузер не разрешил копирование. Скопируйте данные из полей вручную.", true);
-            reachGoal(formSubmitGoal, { copied: false });
+            setFormStatus(status, `${channelName} открыт, но браузер не разрешил копирование. Скопируйте данные из полей вручную.`, true);
         }
+        reachGoal(channelGoal, { channel, copied });
     });
 
     emailButton?.addEventListener("click", () => {

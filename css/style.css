@@ -1321,7 +1321,26 @@ label {
 
 .form-submit {
     width: 100%;
-    margin-top: 4px;
+}
+
+.form-channel-actions {
+    min-width: 0;
+    margin: 4px 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.form-channel-actions legend {
+    margin-bottom: 10px;
+    color: var(--ink-soft);
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.form-channel-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
 }
 
 .form-note,
@@ -1945,6 +1964,10 @@ label {
 
     .section-heading {
         margin-bottom: 38px;
+    }
+
+    .form-channel-buttons {
+        grid-template-columns: 1fr;
     }
 
     .hero {

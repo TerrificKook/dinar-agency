@@ -387,7 +387,7 @@
                         <a class="button button-outline-light" href="tel:+79958815095" data-analytics-goal="audit_page_phone_cta">Позвонить: +7 (995) 881-50-95</a>
                         <button class="button button-outline-light" id="emailDraftButton" type="button" data-email-b64="ZGJAZGluYXJkYi5ydQ==" data-analytics-goal="audit_page_email_cta">Отправить по email</button>
                     </div>
-                    <p class="contact-hint">Форма ничего не отправляет на сервер. Она подготовит текст, скопирует его и откроет Telegram. Email хранится в кодированном виде и раскрывается только после действия.</p>
+                    <p class="contact-hint">Форма ничего не отправляет на сервер. Она подготовит текст для Telegram, MAX или email. Email хранится в кодированном виде и раскрывается только после действия.</p>
                 </div>
                 <form class="contact-form" id="contactForm" data-analytics-start-goal="audit_page_form_start" data-analytics-submit-goal="audit_page_form_telegram">
                     <div class="form-heading"><h3>Подготовить сообщение о сайте</h3><span>Поля со звёздочкой обязательны</span></div>
@@ -399,8 +399,15 @@
                     <label><span>Контакт для ответа *</span><input type="text" name="contact" autocomplete="email" placeholder="Email или @username" required></label>
                     <label class="honeypot" aria-hidden="true"><span>Не заполняйте это поле</span><input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
                     <input type="hidden" name="form_started_at" value="">
-                    <button class="button button-primary form-submit" type="submit">Скопировать сообщение и открыть Telegram</button>
-                    <p class="form-note">Перед открытием Telegram текст будет скопирован в буфер обмена. Файлы можно приложить уже в диалоге.</p>
+                    <fieldset class="form-channel-actions">
+                        <legend>Куда отправить сообщение?</legend>
+                        <div class="form-channel-buttons">
+                            <button class="button button-primary form-submit" type="submit" data-contact-channel="telegram">Telegram</button>
+                            <button class="button button-secondary form-submit" type="submit" data-contact-channel="max">MAX</button>
+                            <button class="button button-secondary form-submit" type="submit" data-contact-channel="email">Email</button>
+                        </div>
+                    </fieldset>
+                    <p class="form-note">Текст будет подготовлен и скопирован. Файлы можно приложить уже в открывшемся приложении.</p>
                     <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
                 </form>
             </div>

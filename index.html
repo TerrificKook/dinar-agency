@@ -307,7 +307,7 @@
             <div class="container contact-grid">
                 <div class="contact-copy"><p class="section-kicker">Первый контакт</p><h2 id="contact-title">Коротко опишите задачу</h2><p>Можно обсудить новый сайт или показать адрес существующего. Я задам уточняющие вопросы и предложу подходящий следующий шаг без обязательства сразу заказывать большой проект.</p>
                     <div class="button-row"><a class="button button-light" href="https://t.me/mrdinar" target="_blank" rel="noopener" data-analytics-goal="telegram_final">Написать в Telegram</a><a class="button button-outline-light" href="https://max.ru/u/f9LHodD0cOKdKxpZWRTf6opqWFE4_FBbFln83YGEvx6yfmukrq7u5bdn0Wg" target="_blank" rel="noopener" data-analytics-goal="max_final">Написать в MAX</a><a class="button button-outline-light" href="tel:+79958815095" data-analytics-goal="phone_final">Позвонить: +7 (995) 881-50-95</a><button class="button button-outline-light" id="emailDraftButton" type="button" data-email-b64="ZGJAZGluYXJkYi5ydQ==" data-analytics-goal="email_final">Отправить по email</button></div>
-                    <p class="contact-hint">Форма ничего не отправляет на сервер. Она подготовит текст, скопирует его и откроет Telegram. Email хранится в кодированном виде и раскрывается только после действия.</p>
+                    <p class="contact-hint">Форма ничего не отправляет на сервер. Она подготовит текст для Telegram, MAX или email. Email хранится в кодированном виде и раскрывается только после действия.</p>
                 </div>
                 <form class="contact-form" id="contactForm">
                     <div class="form-heading"><h3>Подготовить первое сообщение</h3><span>Поля со звёздочкой обязательны</span></div>
@@ -319,8 +319,15 @@
                     <label><span>Контакт для ответа *</span><input type="text" name="contact" autocomplete="email" placeholder="Email или @username" required></label>
                     <label class="honeypot" aria-hidden="true"><span>Не заполняйте это поле</span><input type="text" name="company_website" tabindex="-1" autocomplete="off"></label>
                     <input type="hidden" name="form_started_at" value="">
-                    <button class="button button-primary form-submit" type="submit">Скопировать сообщение и открыть Telegram</button>
-                    <p class="form-note">Перед открытием Telegram текст будет скопирован в буфер обмена. Файлы можно приложить уже в диалоге.</p>
+                    <fieldset class="form-channel-actions">
+                        <legend>Куда отправить сообщение?</legend>
+                        <div class="form-channel-buttons">
+                            <button class="button button-primary form-submit" type="submit" data-contact-channel="telegram">Telegram</button>
+                            <button class="button button-secondary form-submit" type="submit" data-contact-channel="max">MAX</button>
+                            <button class="button button-secondary form-submit" type="submit" data-contact-channel="email">Email</button>
+                        </div>
+                    </fieldset>
+                    <p class="form-note">Текст будет подготовлен и скопирован. Файлы можно приложить уже в открывшемся приложении.</p>
                     <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
                 </form>
             </div>
