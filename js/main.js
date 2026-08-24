@@ -117,6 +117,9 @@ function initContactForm() {
     const emailButton = document.querySelector("#emailDraftButton");
     if (!form) return;
 
+    const formStartGoal = form.getAttribute("data-analytics-start-goal") || "contact_form_start";
+    const formSubmitGoal = form.getAttribute("data-analytics-submit-goal") || "contact_form_telegram";
+
     const startedAt = Date.now();
     const startedInput = form.elements.namedItem("form_started_at");
     if (startedInput) {
@@ -126,7 +129,7 @@ function initContactForm() {
     let formStartTracked = false;
     form.addEventListener("input", () => {
         if (!formStartTracked) {
-            reachGoal("contact_form_start");
+            reachGoal(formStartGoal);
             formStartTracked = true;
         }
     });
@@ -162,10 +165,10 @@ function initContactForm() {
             setFormStatus(status, telegramWindow
                 ? "Текст скопирован. Вставьте его в открывшийся диалог Telegram."
                 : "Текст скопирован. Откройте Telegram и отправьте его пользователю @mrdinar.");
-            reachGoal("contact_form_telegram", { copied: true });
+            reachGoal(formSubmitGoal, { copied: true });
         } else {
             setFormStatus(status, "Telegram открыт, но браузер не разрешил копирование. Скопируйте данные из полей вручную.", true);
-            reachGoal("contact_form_telegram", { copied: false });
+            reachGoal(formSubmitGoal, { copied: false });
         }
     });
 
