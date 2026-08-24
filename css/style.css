@@ -1527,9 +1527,11 @@ label {
 
 .case-card-top {
     display: flex;
+    min-height: 70px;
     margin-bottom: 22px;
     padding-bottom: 14px;
     border-bottom: 1px solid var(--line);
+    align-items: flex-start;
     justify-content: space-between;
     gap: 14px;
 }
@@ -1879,6 +1881,10 @@ label {
     .faq-grid,
     .contact-grid {
         grid-template-columns: 1fr;
+    }
+
+    .case-card-top {
+        min-height: 0;
     }
 
     .solution-card {
