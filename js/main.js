@@ -1,6 +1,6 @@
 "use strict";
 
-// This site only provides direct contacts. No analytics or browser attribution storage.
+// Main page interactions; consent-gated analytics lives in js/consent-metrika.js.
 document.documentElement.classList.add("js");
 document.addEventListener("DOMContentLoaded", () => {
     const year = document.querySelector("#currentYear");

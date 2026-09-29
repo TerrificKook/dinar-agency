@@ -289,6 +289,12 @@ document.addEventListener("DOMContentLoaded", () => {
       selectors.promptResult.classList.add("is-changing");
     });
 
+    selectors.promptForm?.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" || event.target?.tagName !== "INPUT") return;
+      event.preventDefault();
+      document.querySelector("#buildPrompt")?.click();
+    });
+
     selectors.copyGeneratedPrompt?.addEventListener("click", () => {
       copyText(selectors.promptResult?.textContent.trim(), selectors.copyGeneratedPrompt, "fishki_generated_prompt_copy");
     });
