@@ -24,31 +24,6 @@
   <meta name="twitter:description" content="Публичная лаборатория с базой знаний, шаблонами и рабочими инструментами.">
   <meta name="twitter:image" content="https://dinar.agency/images/og-dinar-agency.png">
 
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();
-      for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109675049', 'ym');
-
-    ym(109675049, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-  </script>
-  <!-- /Yandex.Metrika counter -->
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1CB6EWXD6X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-1CB6EWXD6X');
-  </script>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 
   <script type="application/ld+json">
@@ -76,7 +51,7 @@
 <body>
   <noscript>
     <div class="noscript-note">В разделе есть 30 карточек и 4 PDF. Для поиска, фильтров, генератора и копирования включите JavaScript.</div>
-    <div><img src="https://mc.yandex.ru/watch/109675049" class="metrika-pixel" alt=""></div>
+    <div></div>
   </noscript>
 
   <div class="page">
@@ -93,8 +68,8 @@
           <a href="#story">Как устроено</a>
         </nav>
         <div class="header-actions">
-          <a class="btn btn-small btn-ghost" href="../" data-analytics-goal="fishki_back_to_agency">Dinar.agency</a>
-          <a class="btn btn-small" href="#" data-contact-link data-analytics-goal="fishki_contact_click">Написать</a>
+          <a class="btn btn-small btn-ghost" href="../">Dinar.agency</a>
+          <a class="btn btn-small" href="#" data-contact-link>Написать</a>
         </div>
       </div>
     </header>
@@ -110,9 +85,9 @@
               Здесь можно искать материалы, открывать PDF и собирать базовый промт под свою задачу.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="#catalog" data-analytics-goal="fishki_catalog_anchor">Открыть каталог</a>
-              <a class="btn" href="#pdf" data-analytics-goal="fishki_pdf_anchor">Открыть PDF</a>
-              <a class="btn btn-ghost" href="#" data-tg-link data-analytics-goal="fishki_telegram_click">Перейти в канал</a>
+              <a class="btn btn-primary" href="#catalog">Открыть каталог</a>
+              <a class="btn" href="#pdf">Открыть PDF</a>
+              <a class="btn btn-ghost" href="#" data-tg-link>Перейти в канал</a>
             </div>
 
             <div class="stats" aria-label="Содержимое раздела">
@@ -191,7 +166,7 @@
           </div>
 
           <div class="catalog-tools reveal">
-            <input class="search-field" id="catalogSearch" type="search" placeholder="Поиск по базе: клиент, оффер, Ozon, пост..." aria-label="Поиск по базе материалов" autocomplete="off">
+            <input class="search-field ym-disable-keys ym-hide-content" id="catalogSearch" type="search" placeholder="Поиск по базе: клиент, оффер, Ozon, пост..." aria-label="Поиск по базе материалов" autocomplete="off">
             <div class="filter-row" id="filterRow" aria-label="Фильтры каталога"></div>
           </div>
 
@@ -232,37 +207,38 @@
           </div>
 
           <div class="prompt-layout">
-            <form class="prompt-card reveal" id="promptForm">
+            <div class="prompt-card reveal" id="promptForm" role="group" aria-label="Локальный конструктор промта">
+<p>Поля работают только в вашем браузере: текст не отправляется и не сохраняется сайтом. Не вводите персональные и конфиденциальные сведения.</p>
               <div class="form-grid">
                 <div class="form-field">
                   <label for="taskInput">Задача</label>
-                  <input id="taskInput" type="text" placeholder="Например: написать пост для Telegram">
+                  <input id="taskInput" class="ym-disable-keys ym-hide-content" type="text" placeholder="Например: написать пост для Telegram">
                 </div>
                 <div class="form-field">
                   <label for="audienceInput">Для кого</label>
-                  <input id="audienceInput" type="text" placeholder="Например: для владельцев малого бизнеса">
+                  <input id="audienceInput" class="ym-disable-keys ym-hide-content" type="text" placeholder="Например: для владельцев малого бизнеса">
                 </div>
                 <div class="form-field">
                   <label for="placeInput">Где использовать</label>
-                  <input id="placeInput" type="text" placeholder="Например: в канале, письме, карточке товара">
+                  <input id="placeInput" class="ym-disable-keys ym-hide-content" type="text" placeholder="Например: в канале, письме, карточке товара">
                 </div>
                 <div class="form-field">
                   <label for="toneInput">Тон</label>
-                  <input id="toneInput" type="text" placeholder="Например: живой, спокойный, без пафоса">
+                  <input id="toneInput" class="ym-disable-keys ym-hide-content" type="text" placeholder="Например: живой, спокойный, без пафоса">
                 </div>
                 <div class="form-field">
                   <label for="banInput">Что нельзя</label>
-                  <textarea id="banInput" placeholder="Например: не писать канцеляритом, не обещать чудес"></textarea>
+                  <textarea id="banInput" class="ym-disable-keys ym-hide-content" placeholder="Например: не писать канцеляритом, не обещать чудес"></textarea>
                 </div>
               </div>
               <div class="button-row">
-                <button class="btn btn-primary" type="submit">Собрать промт</button>
+                <button class="btn btn-primary" type="button" id="buildPrompt">Собрать промт</button>
               </div>
-            </form>
+            </div>
 
             <div class="prompt-card reveal">
               <h3>Готовый промт</h3>
-              <div class="prompt-result" id="promptResult">
+              <div class="prompt-result ym-hide-content" id="promptResult">
                 Заполните поля слева и нажмите кнопку. Здесь появится текст, который можно скопировать.
               </div>
               <div class="button-row">
@@ -305,8 +281,8 @@
               В лабораторию попадают отобранные материалы, которые удобно искать, открывать и применять.
             </p>
             <div class="button-row">
-              <a class="btn btn-primary" href="#" data-tg-link data-analytics-goal="fishki_telegram_click_bottom">Открыть Telegram-канал</a>
-              <a class="btn" href="../#contact" data-analytics-goal="fishki_agency_contact">Обсудить такой раздел</a>
+              <a class="btn btn-primary" href="#" data-tg-link>Открыть Telegram-канал</a>
+              <a class="btn" href="../#contact">Обсудить такой раздел</a>
             </div>
           </div>
         </div>
@@ -316,10 +292,10 @@
     <footer class="site-footer">
       <div class="footer-inner">
         <p>Лаборатория Dinar.agency — практичные материалы и рабочие эксперименты.</p>
-        <div class="footer-links">
+        <div class="footer-links"><a href="/privacy/">О данных на сайте</a>
           <a href="../">Dinar.agency</a>
-          <a href="#" data-tg-link data-analytics-goal="fishki_telegram_click_footer">Telegram</a>
-          <a href="#pdf" data-analytics-goal="fishki_pdf_anchor_footer">PDF</a>
+          <a href="#" data-tg-link>Telegram</a>
+          <a href="#pdf">PDF</a>
         </div>
       </div>
     </footer>
@@ -346,5 +322,5 @@
 
   <script src="data/content.js" defer></script>
   <script src="js/main.js" defer></script>
-</body>
+<script src="/js/consent-metrika.js" defer></script></body>
 </html>

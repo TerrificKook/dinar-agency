@@ -1,0 +1,12 @@
+{
+  "source": ".",
+  "dirs": [
+    "assets",
+    "css",
+    "js",
+    "images",
+    "fishki-biznesa",
+    "razbor-sayta",
+    "privacy"
+  ]
+}

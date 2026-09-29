@@ -44,7 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
   bindTipEvents();
   initReveal();
   initHeaderScroll();
-  initAnalytics();
 
   function applyLinks() {
     const telegram = content.links?.telegram || "https://t.me/mrdinar";
@@ -176,7 +175,6 @@ document.addEventListener("DOMContentLoaded", () => {
         state.filter = button.dataset.filter;
         renderFilters();
         renderCatalog();
-        reachGoal("fishki_filter_click", { filter: state.filter });
       });
     }
 
@@ -199,7 +197,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (openButton) {
           openCard(Number(openButton.dataset.open), openButton);
-          reachGoal("fishki_prompt_open");
         }
       });
     }
@@ -266,12 +263,11 @@ document.addEventListener("DOMContentLoaded", () => {
       selectors.tipText.classList.remove("is-changing");
       void selectors.tipText.offsetWidth;
       selectors.tipText.classList.add("is-changing");
-      reachGoal("fishki_random_tip");
     });
   }
 
   function bindPromptEvents() {
-    selectors.promptForm?.addEventListener("submit", (event) => {
+    document.querySelector("#buildPrompt")?.addEventListener("click", (event) => {
       event.preventDefault();
 
       const task = document.querySelector("#taskInput")?.value.trim() || "[задача]";
@@ -291,7 +287,12 @@ document.addEventListener("DOMContentLoaded", () => {
       selectors.promptResult.classList.remove("is-changing");
       void selectors.promptResult.offsetWidth;
       selectors.promptResult.classList.add("is-changing");
-      reachGoal("fishki_prompt_generator");
+    });
+
+    selectors.promptForm?.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" || event.target?.tagName !== "INPUT") return;
+      event.preventDefault();
+      document.querySelector("#buildPrompt")?.click();
     });
 
     selectors.copyGeneratedPrompt?.addEventListener("click", () => {
@@ -320,7 +321,6 @@ document.addEventListener("DOMContentLoaded", () => {
       button?.classList.add("copied");
       window.setTimeout(() => button?.classList.remove("copied"), 450);
       showToast("Скопировано. Можно вставлять в ChatGPT.");
-      reachGoal(goalName);
     } catch (error) {
       showToast("Не получилось скопировать. Выделите текст вручную.");
     }
@@ -365,27 +365,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
   }
 
-  function initAnalytics() {
-    document.addEventListener("click", (event) => {
-      const target = event.target.closest("[data-analytics-goal]");
-      if (!target) return;
-
-      reachGoal(target.getAttribute("data-analytics-goal"), {
-        text: target.textContent.trim(),
-        href: target.getAttribute("href") || ""
-      });
-    });
-  }
-
-  function reachGoal(goalName, params = {}) {
-    if (!goalName) return;
-
-    if (typeof window.ym === "function") {
-      window.ym(109675049, "reachGoal", goalName, params);
-    }
-
-    if (typeof window.gtag === "function") {
-      window.gtag("event", goalName, params);
-    }
-  }
 });
