@@ -18,5 +18,6 @@
     "robots.txt",
     "sitemap.xml",
     "yandex_178e592cace64c55.html"
-  ]
+  ],
+  "remote_python": "/opt/python/python-3.8.8/bin/python"
 }
