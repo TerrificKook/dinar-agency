@@ -8,5 +8,15 @@
     "fishki-biznesa",
     "razbor-sayta",
     "privacy"
+  ],
+  "domain": "dinar.agency",
+  "site_url": "https://dinar.agency/",
+  "repository": "TerrificKook/dinar-agency",
+  "root_files": [
+    "favicon.svg",
+    "index.html",
+    "robots.txt",
+    "sitemap.xml",
+    "yandex_178e592cace64c55.html"
   ]
 }
