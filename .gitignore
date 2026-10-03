@@ -1,2 +1,4 @@
 
 /dist-regru/
+__pycache__/
+*.py[cod]
