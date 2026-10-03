@@ -28,3 +28,9 @@ Public version.json must match the expected SHA over verified HTTPS.
 Do not merge the preparation branch before the site's transfer approval. A merge
 can also trigger the existing GitHub Pages publishing. Old Pages settings remain
 available as part of the rollback plan and are not disabled by this workflow.
+
+The reviewed root .htaccess preserves request path and query while directing
+content pages to the HTTPS apex host through the hosting FastCGI (Apache)
+handler. The ACME challenge path is exempt. Other hidden or nested server
+configuration files are excluded. The hostname redirect is prepared and
+validated on the new copy before web DNS is changed.

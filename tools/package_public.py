@@ -28,6 +28,11 @@ def copy_file(f):
     rel = f.relative_to(source)
     if f.is_symlink():
         raise SystemExit('Refusing symlink: ' + str(rel))
+    # Publish only the explicitly listed root configuration; no nested exception.
+    if len(rel.parts) == 1 and rel.parts[0] == '.htaccess' and '.htaccess' in config.get('root_files', []):
+        safe_name(rel.as_posix())
+        shutil.copy2(f, dest / '.htaccess')
+        return
     if any(p.startswith('.') or p in {'node_modules', 'docs', 'notes', 'tools', 'tests',
             'output', 'research', '_project_context', '__pycache__'} for p in rel.parts):
         return
@@ -40,6 +45,15 @@ def copy_file(f):
 
 
 if config['source'] == 'public':
+    # A generated public tree takes its explicit server configuration from repo root.
+    for name in config.get('root_files', []):
+        if name != '.htaccess':
+            raise SystemExit('Unapproved root server configuration')
+        f = ROOT / name
+        if not f.is_file() or f.is_symlink():
+            raise SystemExit('Missing or symlink root server configuration')
+        safe_name(name)
+        shutil.copy2(f, dest / name)
     for f in source.rglob('*'):
         if f.is_file():
             copy_file(f)
