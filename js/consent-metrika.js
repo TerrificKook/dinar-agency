@@ -8,7 +8,7 @@
 
   const key = "site_analytics_choice_v2";
   const optOutKey = "site_analytics_optout_v2";
-  const version = 2;
+  const version = 3;
   const lifetime = 180 * 24 * 60 * 60 * 1000; // Project setting, not a legal retention period.
   const disableKey = `disableYaCounter${config.counterId}`;
   const safePath = /^\/[a-z0-9/_.-]*$/i.test(location.pathname) &&
@@ -48,7 +48,7 @@
     if (fallbackDenied()) return "deny";
     try {
       const choice = JSON.parse(localStorage.getItem(key));
-      if (!choice || choice.version !== version ||
+      if (!choice || (choice.version !== version && !(Number.isInteger(choice.version) && choice.version >= 2 && choice.version < version && choice.status === "deny")) ||
           !["allow", "deny"].includes(choice.status) ||
           !Number.isFinite(choice.at) || !Number.isFinite(choice.until) ||
           choice.at > Date.now() || choice.until <= Date.now() ||
@@ -189,7 +189,7 @@
     panel.className = "analytics-choice";
     panel.setAttribute("role", "region");
     panel.setAttribute("aria-label", "Выбор аналитики");
-    panel.innerHTML = `<p>Разрешаете Яндекс Метрику для анализа посещений, рекламы, кликов, прокрутки и записи действий без ввода текста? До выбора она не загружается. <a href="${config.notice}">Условия и текст согласия</a>.</p><div class="analytics-choice-actions"><button type="button" data-choice="allow">Разрешить аналитику</button><button type="button" data-choice="deny">Без аналитики</button></div><p class="analytics-error" hidden role="status">Не удалось сохранить выбор. На этой странице аналитика выключена; перед следующим посещением проверьте выбор снова.</p>`;
+    panel.innerHTML = `<p>Разрешаете Яндекс Метрику для анализа посещений, рекламы, кликов, прокрутки и записи действий без ввода текста? До выбора она не загружается. <a href="${config.notice}">Согласие на аналитику</a> · <a href="/privacy/">О данных на сайте</a>.</p><div class="analytics-choice-actions"><button type="button" data-choice="allow">Разрешить аналитику</button><button type="button" data-choice="deny">Без аналитики</button></div><p class="analytics-error" hidden role="status">Не удалось сохранить выбор. На этой странице аналитика выключена; перед следующим посещением проверьте выбор снова.</p>`;
     panel.addEventListener("click", event => {
       const button = event.target.closest("button[data-choice]");
       if (!button) return;
